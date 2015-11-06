@@ -18,7 +18,6 @@ public class GridElement : MonoBehaviour {
 		Color.blue,
 		new Color(1, 0, 1)
 	};
-	public bool canBeReplaced = true;
 	public bool canChain = true;
 	private int permanentColorIndex;
 	private Direction explosionDirection;
@@ -34,6 +33,7 @@ public class GridElement : MonoBehaviour {
 	public bool disabled = false;
 	private float colorDelay;
 	private bool delayedColorSet = true;
+	public bool canBeReplaced;
 	
 	public enum Direction { None, Forward, Backward };
 
@@ -59,7 +59,7 @@ public class GridElement : MonoBehaviour {
 		
 		if(insertedIntoMatrix){
 			if(permanentColorSet) permanentColorIndex = colorIndex;
-			canBeReplaced = !disabled;
+			if(canBeReplaced) canBeReplaced = !disabled;
 		}else{
 			ManageHoverState ();
 		}

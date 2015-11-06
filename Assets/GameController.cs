@@ -13,7 +13,7 @@ public class GameController : MonoBehaviour {
 	public static GameObject nextCluster;
 	
 	private static GameController instance;
-	public static int targetCount = 10;
+	public static int targetCount = 0;
 	public static int randomizedTileCount = 0;
 	
 	private float minX = -2.8f;
@@ -29,9 +29,20 @@ public class GameController : MonoBehaviour {
 		grid = GameObject.Find ("Grid").GetComponent<GFGrid>();
 		
 		InitializeTiles();
-		CreateRandomizedObjects((GameObject)Resources.Load ("Tile"), randomizedTileCount);
-		CreateRandomizedObjects((GameObject)Resources.Load ("Target"), targetCount);
 		
+		ArrayList tiles = CreateRandomizedObjects((GameObject)Resources.Load ("Tile"), randomizedTileCount);
+		ArrayList targets = CreateRandomizedObjects((GameObject)Resources.Load ("Target"), targetCount);
+		
+//		print ("count:" + targets.Count);
+		
+		foreach(GameObject tile in tiles){
+			tile.transform.parent = GameObject.Find ("Tiles").transform;
+		}
+		
+		foreach(GameObject target in targets){
+			target.transform.parent = GameObject.Find ("Targets").transform;
+		}
+//		
 		nextCluster = GenerateNextCluster();
 	}
 	
@@ -73,16 +84,23 @@ public class GameController : MonoBehaviour {
 	private GameObject GenerateNextCluster(){
 		return(Instantiate(clusters[0], new Vector3(-100, -100, 0), Quaternion.identity) as GameObject);
 	}	
-	private void CreateRandomizedObjects(GameObject objectToCreate, int numberOfObjects){
-		for (int i = 0; i < randomizedTileCount; i++)
+	private ArrayList CreateRandomizedObjects(GameObject objectToCreate, int numberOfObjects){
+		ArrayList gameObjects = new ArrayList();
+		for (int i = 0; i < numberOfObjects; i++)
 		{
 			bool success = false;
 			while(success == false){
 				Vector3 position = new Vector3(Random.Range (minX, maxX), Random.Range (minY, maxY), 5);
-				GameObject tile = Instantiate (Resources.Load ("Tile"), position, Quaternion.identity) as GameObject;
+				GameObject tile = Instantiate (objectToCreate, position, Quaternion.identity) as GameObject;
 				grid.AlignTransform(tile.transform);
 				success = matrix.InsertIntoMatrix(tile);
+				if(success){
+					gameObjects.Add (tile);
+				}else{
+					Destroy (tile);
+				}
 			}
 		}
+		return(gameObjects);
 	}
 }

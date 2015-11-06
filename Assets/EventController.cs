@@ -4,6 +4,7 @@ using System.Collections;
 public class EventController : MonoBehaviour {
 
 	public static ArrayList tilesToReviewForLevel1 = new ArrayList();
+	public static ArrayList tilesToReviewForLevel4 = new ArrayList();
 	public static ArrayList tilesToReviewForBombs = new ArrayList();
 	
 	private float timeSinceLastEvaluation;
@@ -22,9 +23,11 @@ public class EventController : MonoBehaviour {
 	}
 	
 	void Update(){
-		if(readyToExplode && explosionDelay > 2){
+		print (tilesToReviewForLevel4.Count);
+		if(readyToExplode && explosionDelay > 1){
 			Explode ();
 		}else if(readyToExplode){
+			GameController.ResetEventTimer();
 			explosionDelay += Time.deltaTime;
 		}else if(tilesToFlip.Count > 0 && timeSinceLastFlip > .3f){
 			FlipTiles ();
@@ -65,7 +68,7 @@ public class EventController : MonoBehaviour {
 		
 		centerCandidates.Clear();
 		
-		tilesToReviewForLevel1 = tilesToFlip;
+		tilesToReviewForLevel1 = (ArrayList)tilesToFlip.Clone ();
 		
 		foreach(Tile tile in tilesToFlip){
 			if(!tilesToReviewForBombs.Contains(tile)) tilesToReviewForBombs.Add (tile);
@@ -106,6 +109,7 @@ public class EventController : MonoBehaviour {
 	}
 	
 	private void Explode(){
+		GameController.ResetEventTimer();
 		foreach(Bomb bomb in fieldBombs){
 			bomb.Explode ();
 		}
