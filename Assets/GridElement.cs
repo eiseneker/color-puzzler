@@ -219,7 +219,7 @@ public class GridElement : MonoBehaviour {
 		return(alive && (agnostic || colorIndex != colors.Length));
 	}
 	
-	private void HandleExplosionWithNoDirection(GridElement neighbor, int refundValue){
+	private void HandleExplosionWithNoDirection(GridElement neighbor, int inputRefundValue){
 		bool eitherIsAgnostic = agnostic || neighbor.agnostic;
 		bool colorMatchesNeighbor = ColorMatches(neighbor);
 	
@@ -229,7 +229,9 @@ public class GridElement : MonoBehaviour {
 			bool neighborIsSame = ColorMatches (neighbor) && newDirection == Direction.None;
 			if(eitherIsAgnostic || newCascade || neighborIsSame){
 				if(newDirection != Direction.None && !colorMatchesNeighbor){
-					refundValue = refundValue ++;
+					print("increased value!");
+					refundValue = inputRefundValue + 1;
+					print ("new refund value " + refundValue);
 				}
 				neighbor.SetExplode(newDirection, refundValue);
 			}
@@ -240,12 +242,14 @@ public class GridElement : MonoBehaviour {
 		}
 	}
 	
-	private void HandleExplosionWithDirection(GridElement neighbor, int refundValue){
+	private void HandleExplosionWithDirection(GridElement neighbor, int inputRefundValue){
 		bool eitherIsAgnostic = agnostic || neighbor.agnostic;
 	
 		if(eitherIsAgnostic || ColorMatches (neighbor) || DirectionMatchesNeighbor(explosionDirection, neighbor)){
 			if(colorIndex != neighbor.colorIndex){
-				refundValue = refundValue + 1;
+				print("increased value!");
+				refundValue = inputRefundValue + 1;
+				print ("new refund value " + refundValue);
 			}
 			neighbor.SetExplode(explosionDirection, refundValue);
 		}
@@ -260,10 +264,12 @@ public class GridElement : MonoBehaviour {
 	}
 	
 	private void UpdateGameValues(){
-		if(countable) GameController.remainingTileCount += refundValue;
+		print("countable " + countable);
+		if(countable) GameController.remainingEnergy += refundValue;
+		print ("refunded" + refundValue);
 		if(GetComponent<Target>()){
 			GameController.targetCount--;
-			GameController.remainingTileCount += 10;
+			GameController.remainingEnergy += 10;
 		}
 		Destroy (gameObject);
 	}

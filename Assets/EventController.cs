@@ -4,7 +4,6 @@ using System.Collections;
 public class EventController : MonoBehaviour {
 
 	public static ArrayList tilesToReviewForLevel1 = new ArrayList();
-	public static ArrayList tilesToReviewForLevel4 = new ArrayList();
 	public static ArrayList tilesToReviewForBombs = new ArrayList();
 	
 	private float timeSinceLastEvaluation;
@@ -23,7 +22,6 @@ public class EventController : MonoBehaviour {
 	}
 	
 	void Update(){
-		print (tilesToReviewForLevel4.Count);
 		if(readyToExplode && explosionDelay > 1){
 			Explode ();
 		}else if(readyToExplode){

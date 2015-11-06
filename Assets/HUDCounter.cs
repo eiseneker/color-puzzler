@@ -13,6 +13,6 @@ public class HUDCounter : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		text.text = GameController.remainingTileCount.ToString ();
+		text.text = GameController.remainingEnergy.ToString ();
 	}
 }

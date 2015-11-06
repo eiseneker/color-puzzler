@@ -8,7 +8,7 @@ public class GameController : MonoBehaviour {
 	
 	public static bool frozen = true;
 	private static float timeSinceLastEvent = 0;
-	public static int remainingTileCount = 100;
+	public static float remainingEnergy = 100;
 	public GameObject[] clusters;
 	public static GameObject nextCluster;
 	
@@ -65,7 +65,7 @@ public class GameController : MonoBehaviour {
 	
 	public static GameObject GetNextCluster(){
 		GameObject clusterToReturn = nextCluster;
-		remainingTileCount -= clusterToReturn.GetComponent<Cluster>().TileCount();
+		remainingEnergy -= clusterToReturn.GetComponent<Cluster>().TileCount();
 		nextCluster = instance.GenerateNextCluster();
 		return(clusterToReturn);		
 	}
