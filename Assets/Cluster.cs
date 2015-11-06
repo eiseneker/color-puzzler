@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Cluster : MonoBehaviour {
 	public ArrayList tiles = new ArrayList();
+	private ArrayList tilesToDestroy = new ArrayList();
 	
 	private float variance = .5f;
 	private int replaceIndex;
@@ -10,7 +11,21 @@ public class Cluster : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		foreach(Transform child in transform){
-			tiles.Add (child);
+			GameObject newTile = Instantiate (Resources.Load ("Tile"), child.position, Quaternion.identity) as GameObject;
+			tiles.Add (newTile.transform);
+			newTile.GetComponent<GridElement>().colorIndex = child.GetComponent<GridElement>().colorIndex;
+			newTile.GetComponent<GridElement>().colorSet = child.GetComponent<GridElement>().colorSet;
+			tilesToDestroy.Add(child);
+		}
+		
+		
+		
+		foreach(Transform tile in tilesToDestroy){
+			Destroy (tile.gameObject);
+		}
+		
+		foreach(Transform tile in tiles){
+			tile.parent = transform;
 		}
 		
 		RandomizeTiles();

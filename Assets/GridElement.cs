@@ -32,6 +32,8 @@ public class GridElement : MonoBehaviour {
 	public bool countable = true;
 	private int refundValue = 0;
 	public bool disabled = false;
+	private float colorDelay;
+	private bool delayedColorSet = true;
 	
 	public enum Direction { None, Forward, Backward };
 
@@ -45,6 +47,7 @@ public class GridElement : MonoBehaviour {
 		}
 		
 		UpdateColorByIndex (colorIndex);
+		GetComponent<MeshRenderer>().material.SetColor ("_Color", color);
 	}
 	
 	// Update is called once per frame
@@ -61,6 +64,14 @@ public class GridElement : MonoBehaviour {
 			ManageHoverState ();
 		}
 		
+		if(!delayedColorSet){
+			if(colorDelay > 0){
+				colorDelay -= Time.deltaTime;
+			}else{
+				GetComponent<MeshRenderer>().material.SetColor ("_Color", color);
+			}
+		}
+		
 		HandleExplosion ();
 	}
 	
@@ -71,10 +82,13 @@ public class GridElement : MonoBehaviour {
 	}
 	
 	public void UpdateColorByIndex(int inputColorIndex){
+		UpdateColorByIndex (inputColorIndex, 0);
+	}
+	
+	public void UpdateColorByIndex(int inputColorIndex, float delay){
 		colorIndex = inputColorIndex;
-		print (inputColorIndex);
 		color = colors[inputColorIndex];
-		UpdateColor ();
+		UpdateColor (delay);
 	}
 	
 	public void SetPosition(int xPositionIn, int yPositionIn){
@@ -123,12 +137,17 @@ public class GridElement : MonoBehaviour {
 	}
 	
 	public void UpdateColor(){
+		UpdateColor (0);
+	}
+	
+	public void UpdateColor(float delay){
+		colorDelay = delay;
+		delayedColorSet = false;
 		if(disabled){
 			color = Color.gray;
 		}else if(agnostic){
 			color = Color.white;
 		}
-		GetComponent<MeshRenderer>().material.SetColor ("_Color", color);
 	}
 	
 	private void ManageHoverState(){

@@ -7,4 +7,14 @@ public class Tile : MonoBehaviour {
 
 	public void ResetColor(){
 	}
+	
+	public void ResetTransitionState(){
+		print ("exiting transition state");
+		GetComponent<Animator>().SetBool ("transitioning", false);
+	}
+	
+	public void EnterTransitionState(){
+		print ("entering transition state");
+		GetComponent<Animator>().SetBool ("transitioning", true);
+	}
 }
