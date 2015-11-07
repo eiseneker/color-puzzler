@@ -22,10 +22,14 @@ public class Matrix : MonoBehaviour {
 	public bool InsertIntoMatrix(GameObject objectToInsert){
 		int xArrayPosition = CoordinateToPosition(objectToInsert.transform.position.x, grid.renderTo.x, grid.spacing.x);
 		int yArrayPosition = CoordinateToPosition(objectToInsert.transform.position.y, grid.renderTo.y, grid.spacing.y);
+		print ("trying to insert at... " + xArrayPosition +", " + yArrayPosition);
+		
 		if(CanInsertIntoMatrix(objectToInsert)){
 			if(matrix[xArrayPosition, yArrayPosition]){
 				Destroy (matrix[xArrayPosition, yArrayPosition]);
 			}
+			print ("inserting into " + xArrayPosition +", " + yArrayPosition);
+			
 			matrix[xArrayPosition, yArrayPosition] = objectToInsert;
 			objectToInsert.GetComponent<GridElement>().SetPosition(xArrayPosition, yArrayPosition);
 			return(true);
@@ -41,7 +45,7 @@ public class Matrix : MonoBehaviour {
 			if(matrix[xArrayPosition, yArrayPosition] == null){
 				return(true);
 			}else{
-				return(matrix[xArrayPosition, yArrayPosition].GetComponent<GridElement>().canBeReplaced && objectToInsert.GetComponent<GridElement>().canBeReplaced);
+				return(matrix[xArrayPosition, yArrayPosition].GetComponent<GridElement>().canBeReplaced);
 			}
 		}else{
 			return(false);

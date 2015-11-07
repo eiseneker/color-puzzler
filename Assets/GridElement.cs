@@ -101,15 +101,20 @@ public class GridElement : MonoBehaviour {
 	}
 	
 	public ArrayList CardinalNeighbors(){
+		print ("i am at " + xPosition + ", " + yPosition);
 		ArrayList neighbors = new ArrayList();
 		GameObject neighbor;
 		neighbor = matrix.ElementAtArrayPosition (xPosition - 1, yPosition);
+		print (neighbor);
 		neighbors.Add (neighbor);
 		neighbor = matrix.ElementAtArrayPosition (xPosition + 1, yPosition);
+		print (neighbor);
 		neighbors.Add (neighbor);
 		neighbor = matrix.ElementAtArrayPosition (xPosition, yPosition - 1);
+		print (neighbor);
 		neighbors.Add (neighbor);
 		neighbor = matrix.ElementAtArrayPosition (xPosition, yPosition + 1);
+		print (neighbor);
 		neighbors.Add (neighbor);
 		return(neighbors);
 	}
@@ -190,18 +195,25 @@ public class GridElement : MonoBehaviour {
 	
 	
 	private void Explode(){
+		print ("A");
 		int newValue = refundValue;
 		if(AbleToExplode ()){
+			print ("B");
 			readyToExplode = false;
 			alive = survivesExplosion;
 			ArrayList neighbors = GetComponent<GridElement>().CardinalNeighbors ();
 			foreach(GameObject neighborObject in neighbors){
+				print ("C");
 				if(neighborObject){
+					print ("D");
 					GridElement neighbor = neighborObject.GetComponent<GridElement>();
 					if(!neighbor.survivesExplosion){
+						print ("E");
 						if(explosionDirection == Direction.None){
+							print ("F");
 							HandleExplosionWithNoDirection(neighbor, newValue);
 						}else{
+							print ("G");
 							HandleExplosionWithDirection (neighbor, newValue);
 						}
 					}

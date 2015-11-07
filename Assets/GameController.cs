@@ -13,7 +13,7 @@ public class GameController : MonoBehaviour {
 	public static GameObject nextCluster;
 	
 	private static GameController instance;
-	public static int targetCount = 0;
+	public static int targetCount = 10;
 	public static int randomizedTileCount = 0;
 	
 	private float minX = -2.8f;

@@ -201,6 +201,7 @@ public class EventController : MonoBehaviour {
 		}
 		bomb.GetComponent<GridElement>().UpdateColorByIndex(Mathf.Abs (originalColorIndex + (3 * factor)));
 		bomb.transform.parent = GameObject.Find ("Bombs").transform;
+		print ("inserting bomb into matrix");
 		grid.GetComponent<Matrix>().InsertIntoMatrix(bomb);
 	}
 	
