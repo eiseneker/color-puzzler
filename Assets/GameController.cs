@@ -28,9 +28,8 @@ public class GameController : MonoBehaviour {
 		matrix = GameObject.Find ("Grid").GetComponent<Matrix>();
 		grid = GameObject.Find ("Grid").GetComponent<GFGrid>();
 		
+		LevelLoader.matrix = matrix;
 		LevelLoader.LoadLevel ("1-1");
-		
-		InitializeTiles();
 		
 		ArrayList tiles = CreateRandomizedObjects((GameObject)Resources.Load ("Tile"), randomizedTileCount);
 		ArrayList targets = CreateRandomizedObjects((GameObject)Resources.Load ("Target"), targetCount);
@@ -42,7 +41,6 @@ public class GameController : MonoBehaviour {
 		foreach(GameObject target in targets){
 			target.transform.parent = GameObject.Find ("Targets").transform;
 		}
-//		
 		nextCluster = GenerateNextCluster();
 	}
 	
@@ -68,11 +66,6 @@ public class GameController : MonoBehaviour {
 		remainingEnergy -= clusterToReturn.GetComponent<Cluster>().TileCount();
 		nextCluster = instance.GenerateNextCluster();
 		return(clusterToReturn);		
-	}
-	
-	private void InitializeTiles(){
-		InsertChildrenIntoMatrix(GameObject.Find ("Tiles"));
-		InsertChildrenIntoMatrix(GameObject.Find ("Bombs"));
 	}
 	
 	private void InsertChildrenIntoMatrix(GameObject parentObject){

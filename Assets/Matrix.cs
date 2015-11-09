@@ -22,16 +22,15 @@ public class Matrix : MonoBehaviour {
 	public bool InsertIntoMatrix(GameObject objectToInsert){
 		int xArrayPosition = CoordinateToPosition(objectToInsert.transform.position.x, grid.renderTo.x, grid.spacing.x);
 		int yArrayPosition = CoordinateToPosition(objectToInsert.transform.position.y, grid.renderTo.y, grid.spacing.y);
-		print ("trying to insert at... " + xArrayPosition +", " + yArrayPosition);
 		
 		if(CanInsertIntoMatrix(objectToInsert)){
 			if(matrix[xArrayPosition, yArrayPosition]){
 				Destroy (matrix[xArrayPosition, yArrayPosition]);
 			}
-			print ("inserting into " + xArrayPosition +", " + yArrayPosition);
 			
 			matrix[xArrayPosition, yArrayPosition] = objectToInsert;
 			objectToInsert.GetComponent<GridElement>().SetPosition(xArrayPosition, yArrayPosition);
+			grid.AlignTransform(objectToInsert.transform);
 			return(true);
 		}else{
 			return(false);
@@ -57,6 +56,12 @@ public class Matrix : MonoBehaviour {
 		return(Mathf.CeilToInt(position));
 	}
 	
+	public Vector3 PositionToCoordinate(int x, int y){
+		float newX = (x - RenderTo().x + 1 - (Spacing ().x/2)) * Spacing().x;
+		float newY = (y - RenderTo().y + 1 - (Spacing ().y/2)) * Spacing().y;
+		return(new Vector3(newX, newY, 0));		
+	}
+	
 	public GameObject ElementAtArrayPosition(int xPosition, int yPosition){
 		if(xPosition >= 0 && xPosition < xMax && yPosition >= 0 && yPosition < yMax){
 			return(matrix[xPosition, yPosition]);
@@ -66,13 +71,21 @@ public class Matrix : MonoBehaviour {
 	}
 	
 	public GameObject ElementAtVectorPosition(Vector3 position){
-		int xArrayPosition = CoordinateToPosition(position.x, grid.renderTo.x, grid.spacing.x);
-		int yArrayPosition = CoordinateToPosition(position.y, grid.renderTo.y, grid.spacing.y);
+		int xArrayPosition = CoordinateToPosition(position.x, RenderTo().x, Spacing().x);
+		int yArrayPosition = CoordinateToPosition(position.y, RenderTo().y, Spacing().y);
 		if(xArrayPosition < xMax && yArrayPosition < yMax && xArrayPosition >= 0 && yArrayPosition >= 0 && matrix[xArrayPosition, yArrayPosition]){
 			return(matrix[xArrayPosition, yArrayPosition]);
 		}else{
 			return(null);
 		}
+	}
+	
+	private Vector3 RenderTo(){
+		return(grid.renderTo);
+	}
+	
+	private Vector3 Spacing(){
+		return(grid.spacing);
 	}
 	
 }
