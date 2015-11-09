@@ -14,6 +14,26 @@ public class LevelLoader : MonoBehaviour {
 		GameController.targetCount = json["randomizedTargetCount"].AsInt;
 		GameController.remainingEnergy = json["remainingEnergy"].AsFloat;
 		
+		if(json["tileColorFrequency"] != null){
+			Tile.colorProbability = GetProbabilityArray(json["tileColorFrequency"].AsArray);
+		}
+		
+		if(json["targetColorFrequency"] != null){
+			Target.colorProbability = GetProbabilityArray(json["targetColorFrequency"].AsArray);
+		}
+		
+		if(json["bombColorFrequency"] != null){
+			Bomb.colorProbability = GetProbabilityArray(json["bombColorFrequency"].AsArray);
+		}
+		
+		if(json["clusterColorFrequency"] != null){
+			Cluster.colorProbability = GetProbabilityArray(json["clusterColorFrequency"].AsArray);
+		}
+		
+		if(json["clusterColorVariance"] != null){
+			Cluster.colorVariance = json["clusterColorVariance"].AsFloat;
+		}
+		
 		if(json["grid"] != null){
 			JSONArray elements = json["grid"].AsArray;
 			for(int i = 0; i < elements.Count; i++) {
@@ -29,11 +49,25 @@ public class LevelLoader : MonoBehaviour {
 				if(element["agnostic"] != null){
 					newObject.GetComponent<GridElement>().agnostic = element["agnostic"].AsBool;
 				}
+				if(element["survivesExplosion"] != null){
+					newObject.GetComponent<GridElement>().survivesExplosion = element["survivesExplosion"].AsBool;
+				}
 				matrix.InsertIntoMatrix (newObject);
 			}
 		}
 		
 		
+	}
+	
+	private static float[] GetProbabilityArray(JSONArray jsonArray){
+		return(new float[] {
+			jsonArray[0].AsFloat,
+			jsonArray[1].AsFloat,
+			jsonArray[2].AsFloat,
+			jsonArray[3].AsFloat,
+			jsonArray[4].AsFloat,
+			jsonArray[5].AsFloat
+		});
 	}
 
 }

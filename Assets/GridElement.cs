@@ -41,11 +41,6 @@ public class GridElement : MonoBehaviour {
 	void Start () {
 		matrix = GameObject.Find ("Grid").GetComponent<Matrix>();
 		
-		if(!colorSet){
-			colorIndex = RandomizedColorIndex();
-			colorSet = true;
-		}
-		
 		UpdateColorByIndex (colorIndex);
 		GetComponent<MeshRenderer>().material.SetColor ("_Color", color);
 	}
@@ -324,18 +319,19 @@ public class GridElement : MonoBehaviour {
 		}
 	}
 	
-	private int RandomizedColorIndex(){
+	
+	public static int RandomizedColorIndex(float[] colorProbability){
 		int index;
 		float randomValue = Random.value;
-		if(randomValue > .833f){
+		if(randomValue < ProbabilityIndex (0, colorProbability)){
 			index = 0;
-		}else if(randomValue > .666f){
+		}else if(randomValue < ProbabilityIndex (1, colorProbability)){
 			index = 1;
-		}else if(randomValue > .499f){
+		}else if(randomValue < ProbabilityIndex (2, colorProbability)){
 			index = 2;
-		}else if(randomValue > .332f){
+		}else if(randomValue < ProbabilityIndex (3, colorProbability)){
 			index = 3;
-		}else if(randomValue > .165f){
+		}else if(randomValue < ProbabilityIndex (4, colorProbability)){
 			index = 4;
 		}else{
 			index = 5;
@@ -343,5 +339,12 @@ public class GridElement : MonoBehaviour {
 		return(index);
 	}
 	
+	private static float ProbabilityIndex(int v, float[] colorProbability){
+		float probability = 0;
+		for(int i = v; i >= 0; i--){
+			probability += colorProbability[i];
+		}
+		return(probability);
+	}
 	
 }

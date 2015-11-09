@@ -6,8 +6,9 @@ public class Cluster : MonoBehaviour {
 	private ArrayList tilesToDestroy = new ArrayList();
 	private ArrayList tilesToRandomize = new ArrayList();
 	
+	public static float[] colorProbability = new float[] { 1.666f, 1.666f, 1.666f, 1.666f, 1.666f, 1.666f };
 	
-	private float variance = .25f;
+	public static float colorVariance = .25f;
 	private int replaceIndex;
 
 	// Use this for initialization
@@ -31,11 +32,12 @@ public class Cluster : MonoBehaviour {
 		RandomizeTiles();
 		
 		foreach(Transform tile in tilesToRandomize){
-			if(lastColorIndex != -1 && Random.value < variance){
+			print (colorVariance);
+			if(lastColorIndex != -1 && Random.value > colorVariance){
 				tile.GetComponent<GridElement>().colorIndex = lastColorIndex;
 				tile.GetComponent<GridElement>().colorSet = true;
 			}else{
-				tile.GetComponent<GridElement>().colorIndex = RandomizedColorIndex();
+				tile.GetComponent<GridElement>().colorIndex = GridElement.RandomizedColorIndex(colorProbability);
 				tile.GetComponent<GridElement>().colorSet = true;
 			}
 			lastColorIndex = tile.GetComponent<GridElement>().colorIndex;
@@ -53,25 +55,5 @@ public class Cluster : MonoBehaviour {
 	
 	public int TileCount(){
 		return(transform.childCount);
-	}
-	
-	
-	private int RandomizedColorIndex(){
-		int index;
-		float randomValue = Random.value;
-		if(randomValue > .833f){
-			index = 0;
-		}else if(randomValue > .666f){
-			index = 1;
-		}else if(randomValue > .499f){
-			index = 2;
-		}else if(randomValue > .332f){
-			index = 3;
-		}else if(randomValue > .165f){
-			index = 4;
-		}else{
-			index = 5;
-		}
-		return(index);
 	}
 }
