@@ -7,6 +7,7 @@ public class GameController : MonoBehaviour {
 	private GFGrid grid;
 	
 	public static bool frozen = true;
+	public static bool finished = false;
 	private static float timeSinceLastEvent = 0;
 	public static float remainingEnergy = 100;
 	public GameObject[] clusters;
@@ -48,7 +49,7 @@ public class GameController : MonoBehaviour {
 	void Update () {
 		timeSinceLastEvent += Time.deltaTime;
 	
-		if(timeSinceLastEvent > 1){
+		if(timeSinceLastEvent > 1 && !finished){
 			frozen = false;
 		}
 	}
@@ -58,7 +59,8 @@ public class GameController : MonoBehaviour {
 	}
 	
 	public static void LoadLoseScreen(){
-		Application.LoadLevel ("Lose");
+		Camera.main.GetComponent<Animator>().Play("Desaturate");
+		finished = true;
 	}
 	
 	public static GameObject GetNextCluster(){

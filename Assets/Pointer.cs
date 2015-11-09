@@ -23,7 +23,7 @@ public class Pointer : MonoBehaviour {
 				InsertHere();
 			}
 		}else{
-			if(!GameController.frozen){
+			if(!GameController.frozen && !GameController.finished){
 				Cluster returnedCluster = GameController.GetNextCluster().GetComponent<Cluster>();
 				returnedCluster.transform.position = transform.position;
 				if(GameController.remainingEnergy >= returnedCluster.TileCount()){

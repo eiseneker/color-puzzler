@@ -11,14 +11,13 @@ public class ApplicationController : MonoBehaviour {
 		instance = this;
 	}
 	
-//	public static void GoToLevel(string level){
-//		levelToLoad = level;
-//		Application.LoadLevel ("Game");
-//	}
-	
 	public void GoToLevel(string level){
 		levelToLoad = level;
-		Application.LoadLevel ("Game");
+		Application.LoadLevel("Game");
+	}
+	
+	public void GoToLevelSelect(){
+		Application.LoadLevel("LevelSelect");
 	}
 	
 }

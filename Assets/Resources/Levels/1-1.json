@@ -2,7 +2,7 @@
     "name": "Hello World!",
     "randomizedTileCount": 20,
     "randomizedTargetCount": 10,
-    "remainingEnergy": 150,
+    "remainingEnergy": 10,
     "tileColorFrequency": [
     	"0.16",
     	"0.16",
