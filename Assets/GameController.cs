@@ -13,7 +13,7 @@ public class GameController : MonoBehaviour {
 	public static GameObject nextCluster;
 	
 	private static GameController instance;
-	public static int targetCount = 10;
+	public static int targetCount = 0;
 	public static int randomizedTileCount = 0;
 	
 	private float minX = -2.8f;
@@ -28,12 +28,12 @@ public class GameController : MonoBehaviour {
 		matrix = GameObject.Find ("Grid").GetComponent<Matrix>();
 		grid = GameObject.Find ("Grid").GetComponent<GFGrid>();
 		
+		LevelLoader.LoadLevel ("1-1");
+		
 		InitializeTiles();
 		
 		ArrayList tiles = CreateRandomizedObjects((GameObject)Resources.Load ("Tile"), randomizedTileCount);
 		ArrayList targets = CreateRandomizedObjects((GameObject)Resources.Load ("Target"), targetCount);
-		
-//		print ("count:" + targets.Count);
 		
 		foreach(GameObject tile in tiles){
 			tile.transform.parent = GameObject.Find ("Tiles").transform;

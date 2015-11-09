@@ -1,0 +1,47 @@
+{
+    "name": "Hello World!",
+    "randomizedTileCount": 0,
+    "randomizedTargetCount": 0,
+    "remainingEnergy": 150,
+    "tileColorFrequency": [
+    	"0.1",
+    	"0.1",
+    	"0.1",
+    	"0.1",
+    	"0.1",
+    	"0.1"
+    ],
+    "clusterColorFrequency": [
+    	"0.1",
+    	"0.1",
+    	"0.1",
+    	"0.1",
+    	"0.1",
+    	"0.1",
+    ],
+    "clusterAgnosticFrequency": "0.4",
+    "clusterColorVariance": "0.5",
+    "grid": [
+    	{
+    		"x": 0,
+    		"y": 3,
+    		"type": "tile",
+    		"colorIndex": 0,
+    		"agnostic": false	
+    	},
+    	{
+    		"x": 0,
+    		"y": 4,
+    		"type": "target",
+    		"colorIndex": 1,
+    		"agnostic": false	
+    	},
+    	{
+    		"x": 4,
+    		"y": 18,
+    		"type": "bomb",
+    		"colorIndex": 2,
+    		"agnostic": true
+    	}
+    ]
+}
