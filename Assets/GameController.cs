@@ -29,7 +29,7 @@ public class GameController : MonoBehaviour {
 		grid = GameObject.Find ("Grid").GetComponent<GFGrid>();
 		
 		LevelLoader.matrix = matrix;
-		LevelLoader.LoadLevel ("1-1");
+		LevelLoader.LoadLevel (ApplicationController.levelToLoad);
 		
 		ArrayList tiles = CreateRandomizedObjects((GameObject)Resources.Load ("Tile"), randomizedTileCount);
 		ArrayList targets = CreateRandomizedObjects((GameObject)Resources.Load ("Target"), targetCount);

@@ -40,7 +40,7 @@ public class GridElement : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		matrix = GameObject.Find ("Grid").GetComponent<Matrix>();
-		
+		print ("update Color");
 		UpdateColorByIndex (colorIndex);
 		GetComponent<MeshRenderer>().material.SetColor ("_Color", color);
 	}

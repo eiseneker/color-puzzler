@@ -1,0 +1,48 @@
+{
+    "name": "Oh ROY",
+    "randomizedTileCount": 10,
+    "randomizedTargetCount": 5,
+    "remainingEnergy": 200,
+    "tileColorFrequency": [
+    	"0.16",
+    	"0.16",
+    	"0.16",
+    	"0.16",
+    	"0.16",
+    	"0.16"
+    ],
+    "clusterColorFrequency": [
+    	"0.16",
+    	"0.16",
+    	"0.16",
+    	"0.16",
+    	"0.16",
+    	"0.16",
+    ],
+    "clusterAgnosticFrequency": "0.4",
+    "clusterColorVariance": "0",
+    "grid": [
+    	{
+    		"x": 0,
+    		"y": 3,
+    		"prefabName": "Tile",
+    		"colorIndex": 0,
+    		"agnostic": false	
+    	},
+    	{
+    		"x": 4,
+    		"y": 4,
+    		"prefabName": "Target",
+    		"colorIndex": 1,
+    		"agnostic": false	
+    	},
+    	{
+    		"x": 4,
+    		"y": 18,
+    		"prefabName": "Bomb",
+    		"colorIndex": 2,
+    		"agnostic": true,
+            "survivesExplosion": true
+    	}
+    ]
+}

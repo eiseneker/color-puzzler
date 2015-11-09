@@ -9,6 +9,7 @@ public class Tile : MonoBehaviour {
 	
 	void Start(){
 		if(!GetComponent<GridElement>().colorSet){
+			print ("color getting randomized");
 			GetComponent<GridElement>().colorIndex = GridElement.RandomizedColorIndex(colorProbability);
 			GetComponent<GridElement>().colorSet = true;
 		}
