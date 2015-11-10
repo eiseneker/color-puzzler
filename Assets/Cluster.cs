@@ -32,7 +32,6 @@ public class Cluster : MonoBehaviour {
 		RandomizeTiles();
 		
 		foreach(Transform tile in tilesToRandomize){
-			print (colorVariance);
 			if(lastColorIndex != -1 && Random.value > colorVariance){
 				tile.GetComponent<GridElement>().colorIndex = lastColorIndex;
 				tile.GetComponent<GridElement>().colorSet = true;
