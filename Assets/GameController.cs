@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour {
 	
 	public static bool frozen = true;
 	public static bool finished = false;
+	public static bool textActive = false;
 	private static float timeSinceLastEvent = 0;
 	public static float remainingEnergy = 100;
 	public GameObject[] clusters;
@@ -29,6 +30,7 @@ public class GameController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		finished = false;
+		textActive = false;
 		instance = this;
 		matrix = GameObject.Find ("Grid").GetComponent<Matrix>();
 		grid = GameObject.Find ("Grid").GetComponent<GFGrid>();
@@ -53,9 +55,13 @@ public class GameController : MonoBehaviour {
 	void Update () {
 		timeSinceLastEvent += Time.deltaTime;
 	
-		if(timeSinceLastEvent > 1 && !finished){
+		if(timeSinceLastEvent > 1){
 			frozen = false;
 		}
+	}
+	
+	public static bool Frozen(){
+		return(frozen || finished || textActive);
 	}
 	
 	public static void ResetEventTimer(){
