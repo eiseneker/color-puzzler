@@ -75,7 +75,6 @@ public class GameController : MonoBehaviour {
 	
 	public static GameObject GetNextCluster(){
 		GameObject clusterToReturn = nextCluster;
-		remainingEnergy -= clusterToReturn.GetComponent<Cluster>().TileCount();
 		nextCluster = instance.GenerateNextCluster();
 		return(clusterToReturn);		
 	}

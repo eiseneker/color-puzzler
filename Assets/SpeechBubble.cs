@@ -8,6 +8,7 @@ public class SpeechBubble : MonoBehaviour {
 	public string textToDisplay;
 	public float maxTimeBetweenCharacters;
 	public bool dismissable;
+	public bool dismissesSelf = false;
 	
 	private float currentTimeBetweenCharacters;
 	private Text text;
@@ -15,6 +16,8 @@ public class SpeechBubble : MonoBehaviour {
 	private RectTransform bubble;
 	private float maxWidth;
 	private float maxHeight;
+	private float maxPostFinishDelay = 2f;
+	private float currentPostFinishDelay;
 
 	// Use this for initialization
 	void Start () {
@@ -35,6 +38,13 @@ public class SpeechBubble : MonoBehaviour {
 			if(maxWidth < text.preferredWidth + 40) maxWidth = text.preferredWidth + 40;
 			if(maxHeight < text.preferredHeight + 30) maxHeight = text.preferredHeight + 30;
 			bubble.sizeDelta = new Vector2(maxWidth, maxHeight);
+		}
+		if(dismissesSelf && Finished ()){
+			if(currentPostFinishDelay > maxPostFinishDelay){
+				DismissMe();
+			}else{
+				currentPostFinishDelay += Time.deltaTime;		
+			}
 		}
 	}
 	

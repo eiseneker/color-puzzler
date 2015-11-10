@@ -260,6 +260,12 @@ public class GridElement : MonoBehaviour {
 		if(GetComponent<Target>()){
 			GameController.targetCount--;
 			GameController.remainingEnergy += 10;
+			GameObject bubbleObject = Instantiate (Resources.Load ("SpeechBubble"), Vector3.zero, Quaternion.identity) as GameObject;
+			SpeechBubble speechBubble = bubbleObject.GetComponent<SpeechBubble>();
+			speechBubble.textToDisplay = "yay!";
+			speechBubble.dismissable = true;
+			speechBubble.dismissesSelf = true;
+			speechBubble.transform.position = Camera.main.WorldToScreenPoint(gameObject.transform.position);
 		}
 		Destroy (gameObject);
 	}
