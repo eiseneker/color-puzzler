@@ -16,6 +16,8 @@ public class Target : MonoBehaviour {
 		if(GameObject.Find ("Targets").transform != transform.parent){
 			transform.parent = GameObject.Find ("Targets").transform;
 		}
+		
+		GameController.remainingTargetCount++;
 	}
 	
 }

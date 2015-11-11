@@ -258,7 +258,7 @@ public class GridElement : MonoBehaviour {
 	private void UpdateGameValues(){
 		if(countable) GameController.remainingEnergy += refundValue;
 		if(GetComponent<Target>()){
-			GameController.targetCount--;
+			GameController.remainingTargetCount--;
 			GameController.remainingEnergy += 10;
 			GameObject bubbleObject = Instantiate (Resources.Load ("SpeechBubble"), Vector3.zero, Quaternion.identity) as GameObject;
 			SpeechBubble speechBubble = bubbleObject.GetComponent<SpeechBubble>();

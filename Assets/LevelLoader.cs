@@ -13,7 +13,7 @@ public class LevelLoader : MonoBehaviour {
 		print ("reloading this level!");
 		
 		GameController.randomizedTileCount = json["randomizedTileCount"].AsInt;
-		GameController.targetCount = json["randomizedTargetCount"].AsInt;
+		GameController.randomizedTargetCount = json["randomizedTargetCount"].AsInt;
 		GameController.remainingEnergy = json["remainingEnergy"].AsFloat;
 		
 		print("set " + GameController.remainingEnergy + " from " + json["remainingEnergy"].AsFloat);

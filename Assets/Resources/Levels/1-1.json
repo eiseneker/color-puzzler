@@ -1,8 +1,8 @@
 {
     "name": "Hello World!",
-    "randomizedTileCount": 20,
-    "randomizedTargetCount": 10,
-    "remainingEnergy": 10,
+    "randomizedTileCount": 0,
+    "randomizedTargetCount": 0,
+    "remainingEnergy": 100,
     "tileColorFrequency": [
     	"0.16",
     	"0.16",
@@ -30,14 +30,14 @@
     		"agnostic": false	
     	},
     	{
-    		"x": 0,
-    		"y": 4,
+    		"x": 6,
+    		"y": 18,
     		"prefabName": "Target",
     		"colorIndex": 1,
     		"agnostic": false	
     	},
     	{
-    		"x": 4,
+    		"x": 7,
     		"y": 18,
     		"prefabName": "Bomb",
     		"colorIndex": 2,

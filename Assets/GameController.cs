@@ -16,7 +16,8 @@ public class GameController : MonoBehaviour {
 	public static GameObject nextCluster;
 	
 	private static GameController instance;
-	public static int targetCount = 0;
+	public static int randomizedTargetCount = 0;
+	public static int remainingTargetCount = 0;
 	public static int randomizedTileCount = 0;
 	
 	private float minX = -2.8f;
@@ -39,10 +40,8 @@ public class GameController : MonoBehaviour {
 		LevelLoader.matrix = matrix;
 		LevelLoader.LoadLevel (ApplicationController.levelToLoad);
 		
-		
-		
 		ArrayList tiles = CreateRandomizedObjects((GameObject)Resources.Load ("Tile"), randomizedTileCount);
-		ArrayList targets = CreateRandomizedObjects((GameObject)Resources.Load ("Target"), targetCount);
+		ArrayList targets = CreateRandomizedObjects((GameObject)Resources.Load ("Target"), randomizedTargetCount);
 		
 		foreach(GameObject tile in tiles){
 			tile.transform.parent = GameObject.Find ("Tiles").transform;
@@ -60,7 +59,11 @@ public class GameController : MonoBehaviour {
 		timeSinceLastEvent += Time.deltaTime;
 	
 		if(timeSinceLastEvent > 1){
-			frozen = false;
+			if(remainingTargetCount > 0){
+				frozen = false;
+			}else{
+				LoadWinScreen();
+			}
 		}
 	}
 	
@@ -74,6 +77,11 @@ public class GameController : MonoBehaviour {
 	
 	public static void LoadLoseScreen(){
 		Camera.main.GetComponent<Animator>().Play("Desaturate");
+		finished = true;
+	}
+	
+	public static void LoadWinScreen(){
+		Camera.main.GetComponent<Animator>().Play("WinGlow");
 		finished = true;
 	}
 	
