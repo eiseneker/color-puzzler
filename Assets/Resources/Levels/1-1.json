@@ -1,8 +1,8 @@
 {
     "name": "Hello World!",
-    "randomizedTileCount": 0,
-    "randomizedTargetCount": 0,
-    "remainingEnergy": 100,
+    "randomizedTileCount": 30,
+    "randomizedTargetCount": 20,
+    "remainingEnergy": 5,
     "tileColorFrequency": [
     	"0.16",
     	"0.16",
@@ -11,6 +11,8 @@
     	"0.16",
     	"0.16"
     ],
+    "tileWhiteFrequency": "0.4",
+    "tileBlackFrequency": "0.4",
     "clusterColorFrequency": [
     	"0.16",
     	"0.16",
@@ -19,7 +21,16 @@
     	"0.16",
     	"0.16",
     ],
-    "clusterAgnosticFrequency": "0.4",
+    "targetColorFrequency": [
+        "0.16",
+        "0.16",
+        "0.16",
+        "0.16",
+        "0.16",
+        "0.16",
+    ],
+    "clusterWhiteFrequency": "0.4",
+    "clusterBlackFrequency": "0.4",
     "clusterColorVariance": "0",
     "grid": [
     	{
@@ -27,21 +38,24 @@
     		"y": 3,
     		"prefabName": "Tile",
     		"colorIndex": 0,
-    		"agnostic": false	
+    		"white": false,
+            "black": false
     	},
     	{
     		"x": 6,
     		"y": 18,
     		"prefabName": "Target",
     		"colorIndex": 1,
-    		"agnostic": false	
+    		"white": false,
+            "black": false
     	},
     	{
     		"x": 7,
     		"y": 18,
     		"prefabName": "Bomb",
     		"colorIndex": 2,
-    		"agnostic": true,
+    		"white": true,
+            "black": false,
             "survivesExplosion": true
     	}
     ]

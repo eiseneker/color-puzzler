@@ -19,7 +19,7 @@
     	"0.16",
     	"0.16",
     ],
-    "clusterAgnosticFrequency": "0.4",
+    "clusterWhiteFrequency": "0.4",
     "clusterColorVariance": "0",
     "grid": [
     	{
@@ -27,21 +27,21 @@
     		"y": 3,
     		"prefabName": "Tile",
     		"colorIndex": 0,
-    		"agnostic": false	
+    		"white": false	
     	},
     	{
     		"x": 4,
     		"y": 4,
     		"prefabName": "Target",
     		"colorIndex": 1,
-    		"agnostic": false	
+    		"white": false	
     	},
     	{
     		"x": 4,
     		"y": 18,
     		"prefabName": "Bomb",
     		"colorIndex": 2,
-    		"agnostic": true,
+    		"white": true,
             "survivesExplosion": true
     	}
     ]

@@ -27,7 +27,7 @@ public class GridElement : MonoBehaviour {
 	public bool colorSet = false;
 	private bool permanentColorSet = false;
 	public bool survivesExplosion = false;
-	public bool agnostic = false;
+	public bool white = false;
 	public bool countable = true;
 	private int refundValue = 0;
 	public bool disabled = false;
@@ -139,7 +139,7 @@ public class GridElement : MonoBehaviour {
 		delayedColorSet = false;
 		if(disabled){
 			color = Color.gray;
-		}else if(agnostic){
+		}else if(white){
 			color = Color.white;
 		}
 	}
@@ -210,34 +210,34 @@ public class GridElement : MonoBehaviour {
 	}
 	
 	private bool AbleToExplode(){
-		return(alive && (agnostic || colorIndex != colors.Length));
+		return(alive && (white || colorIndex != colors.Length));
 	}
 	
 	private void HandleExplosionWithNoDirection(GridElement neighbor, int inputRefundValue){
-		bool eitherIsAgnostic = agnostic || neighbor.agnostic;
+		bool eitherIsWhite = white || neighbor.white;
 		bool colorMatchesNeighbor = ColorMatches(neighbor);
 	
 		if(canChain){
 			Direction newDirection = GetDirection(colorIndex, neighbor.colorIndex);
 			bool newCascade = newDirection != Direction.None;
 			bool neighborIsSame = ColorMatches (neighbor) && newDirection == Direction.None;
-			if(eitherIsAgnostic || newCascade || neighborIsSame){
+			if(eitherIsWhite || newCascade || neighborIsSame){
 				if(newDirection != Direction.None && !colorMatchesNeighbor){
 					refundValue = inputRefundValue + 1;
 				}
 				neighbor.SetExplode(newDirection, refundValue);
 			}
 		}else{
-			if(eitherIsAgnostic || colorMatchesNeighbor){
+			if(eitherIsWhite || colorMatchesNeighbor){
 				neighbor.SetExplode(Direction.None, refundValue);
 			}
 		}
 	}
 	
 	private void HandleExplosionWithDirection(GridElement neighbor, int inputRefundValue){
-		bool eitherIsAgnostic = agnostic || neighbor.agnostic;
+		bool eitherIsWhite = white || neighbor.white;
 	
-		if(eitherIsAgnostic || ColorMatches (neighbor) || DirectionMatchesNeighbor(explosionDirection, neighbor)){
+		if(eitherIsWhite || ColorMatches (neighbor) || DirectionMatchesNeighbor(explosionDirection, neighbor)){
 			if(colorIndex != neighbor.colorIndex){
 				print("increased value!");
 				refundValue = inputRefundValue + 1;

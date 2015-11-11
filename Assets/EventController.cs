@@ -92,7 +92,7 @@ public class EventController : MonoBehaviour {
 		
 		foreach(Tile tile in level3Tiles){
 			foreach(GameObject neighbor in tile.GetComponent<GridElement>().AllNeighbors()){
-				neighbor.GetComponent<GridElement>().agnostic = true;
+				neighbor.GetComponent<GridElement>().white = true;
 				neighbor.GetComponent<GridElement>().UpdateColor(1);
 				neighbor.GetComponent<Tile>().EnterTransitionState();
 			}
