@@ -31,7 +31,7 @@ public class Pointer : MonoBehaviour {
 					newPosition.z = 1;
 					cluster = returnedCluster;
 					grid.AlignTransform(cluster.transform);
-					GameController.remainingEnergy -= returnedCluster.TileCount();
+					GameController.remainingEnergy -= GameController.energyRequirement;
 				}else{
 					Destroy (returnedCluster.gameObject);
 					GameController.LoadLoseScreen();
