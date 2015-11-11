@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour {
 	public static bool textActive = false;
 	private static float timeSinceLastEvent = 0;
 	public static float remainingEnergy = 100;
+	public static float energyRequirement = 4;
 	public GameObject[] clusters;
 	public static GameObject nextCluster;
 	
@@ -38,6 +39,8 @@ public class GameController : MonoBehaviour {
 		LevelLoader.matrix = matrix;
 		LevelLoader.LoadLevel (ApplicationController.levelToLoad);
 		
+		
+		
 		ArrayList tiles = CreateRandomizedObjects((GameObject)Resources.Load ("Tile"), randomizedTileCount);
 		ArrayList targets = CreateRandomizedObjects((GameObject)Resources.Load ("Target"), targetCount);
 		
@@ -48,6 +51,7 @@ public class GameController : MonoBehaviour {
 		foreach(GameObject target in targets){
 			target.transform.parent = GameObject.Find ("Targets").transform;
 		}
+		
 		nextCluster = GenerateNextCluster();
 	}
 	

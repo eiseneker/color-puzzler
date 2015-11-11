@@ -13,6 +13,7 @@ public class Cluster : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		transform.parent = GameObject.Find ("Clusters").transform;
 		int lastColorIndex = -1;
 		foreach(Transform child in transform){
 			GameObject newTile = Instantiate (Resources.Load ("Tile"), child.position, Quaternion.identity) as GameObject;
@@ -50,9 +51,5 @@ public class Cluster : MonoBehaviour {
 			tilesToRandomize[i] = tilesToRandomize[randomIndex];
 			tilesToRandomize[randomIndex] = temp;
 		}
-	}
-	
-	public int TileCount(){
-		return(transform.childCount);
 	}
 }

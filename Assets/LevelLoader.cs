@@ -10,9 +10,14 @@ public class LevelLoader : MonoBehaviour {
 		TextAsset levelText = Resources.Load ("Levels/" + levelNumber) as TextAsset;
 		JSONNode json = JSON.Parse (levelText.text);
 		
+		print ("reloading this level!");
+		
 		GameController.randomizedTileCount = json["randomizedTileCount"].AsInt;
 		GameController.targetCount = json["randomizedTargetCount"].AsInt;
 		GameController.remainingEnergy = json["remainingEnergy"].AsFloat;
+		
+		print("set " + GameController.remainingEnergy + " from " + json["remainingEnergy"].AsFloat);
+		
 		
 		if(json["tileColorFrequency"] != null){
 			Tile.colorProbability = GetProbabilityArray(json["tileColorFrequency"].AsArray);
