@@ -24,7 +24,6 @@ public class Matrix : MonoBehaviour {
 		
 		int xArrayPosition = CoordinateToPosition(objectToInsert.transform.position.x, grid.renderTo.x, grid.spacing.x);
 		int yArrayPosition = CoordinateToPosition(objectToInsert.transform.position.y, grid.renderTo.y, grid.spacing.y);
-		print ("insert into " + xArrayPosition + ", " + yArrayPosition);
 		if(CanInsertIntoMatrix(objectToInsert)){
 			if(matrix[xArrayPosition, yArrayPosition]){
 				Destroy (matrix[xArrayPosition, yArrayPosition]);
@@ -53,9 +52,7 @@ public class Matrix : MonoBehaviour {
 	}
 	
 	private int CoordinateToPosition(float coordinate, float renderTo, float spacing){
-		print ("coordinate: " + coordinate);
 		float position = coordinate * (1/spacing) + (spacing/2) + renderTo - 1;
-		print ("interpolate for " + position + " is " + Mathf.CeilToInt(position));
 		return(Mathf.CeilToInt(position));
 	}
 	

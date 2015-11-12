@@ -31,7 +31,6 @@ public class Pointer : MonoBehaviour {
 					newPosition.z = 1;
 					cluster = returnedCluster;
 					grid.AlignTransform(cluster.transform);
-					GameController.remainingEnergy -= GameController.energyRequirement;
 				}else{
 					Destroy (returnedCluster.gameObject);
 					GameController.LoadLoseScreen();
@@ -44,7 +43,7 @@ public class Pointer : MonoBehaviour {
 		GameController.frozen = true;
 		ArrayList children = new ArrayList();
 		bool canMove = true;
-		foreach(Transform child in cluster.transform){
+		foreach(Transform child in cluster.transform.Find ("Tiles")){
 			children.Add (child);
 		}
 		foreach(Transform child in children){

@@ -17,7 +17,7 @@ public class Cluster : MonoBehaviour {
 	void Start () {
 		transform.parent = GameObject.Find ("Clusters").transform;
 		int lastColorIndex = -1;
-		foreach(Transform child in transform){
+		foreach(Transform child in transform.Find ("Tiles")){
 			GameObject newTile = Instantiate (Resources.Load ("Tile"), child.position, Quaternion.identity) as GameObject;
 			tiles.Add (newTile.transform);
 			tilesToRandomize.Add (newTile.transform);
@@ -29,7 +29,7 @@ public class Cluster : MonoBehaviour {
 		}
 		
 		foreach(Transform tile in tiles){
-			tile.parent = transform;
+			tile.parent = transform.Find ("Tiles");
 		}
 		
 		RandomizeTiles();
