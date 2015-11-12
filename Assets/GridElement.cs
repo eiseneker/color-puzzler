@@ -267,9 +267,7 @@ public class GridElement : MonoBehaviour {
 	
 		if((eitherIsWhite || ColorMatches (neighbor) || DirectionMatchesNeighbor(explosionDirection, neighbor))){
 			if(colorIndex != neighbor.colorIndex){
-				print("increased value!");
 				refundValue = inputRefundValue + 1;
-				print ("new refund value " + refundValue);
 			}
 			neighbor.SetExplode(explosionDirection, refundValue);
 		}
@@ -284,7 +282,13 @@ public class GridElement : MonoBehaviour {
 	}
 	
 	private void UpdateGameValues(){
-		if(countable) GameController.remainingEnergy += refundValue;
+		if(countable) {
+			GameController.remainingEnergy += refundValue;
+			if(refundValue > 0){
+				GameObject bonus = Instantiate (Resources.Load ("Bonus"), Camera.main.WorldToScreenPoint(transform.position), Quaternion.identity) as GameObject;
+				bonus.GetComponent<Bonus>().SetValue(refundValue);
+			}
+		}
 		if(GetComponent<Target>()){
 			GameController.remainingTargetCount--;
 			GameController.remainingEnergy += 10;
@@ -294,6 +298,8 @@ public class GridElement : MonoBehaviour {
 			speechBubble.dismissable = true;
 			speechBubble.dismissesSelf = true;
 			speechBubble.transform.position = Camera.main.WorldToScreenPoint(gameObject.transform.position);
+			GameObject bonus = Instantiate (Resources.Load ("Bonus"), Camera.main.WorldToScreenPoint(transform.position), Quaternion.identity) as GameObject;
+			bonus.GetComponent<Bonus>().SetValue(10);
 		}
 		Destroy (gameObject);
 	}

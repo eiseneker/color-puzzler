@@ -1,7 +1,7 @@
 {
     "name": "Hello World!",
-    "randomizedTileCount": 30,
-    "randomizedTargetCount": 20,
+    "randomizedTileCount": 0,
+    "randomizedTargetCount": 0,
     "remainingEnergy": 100,
     "tileColorFrequency": [
     	"0.16",
@@ -14,12 +14,12 @@
     "tileWhiteFrequency": "0",
     "tileBlackFrequency": "0",
     "clusterColorFrequency": [
-    	"0.5",
-    	"0.0",
-    	"0.0",
-    	"0.5",
-    	"0.0",
-    	"0.0",
+    	"0.16",
+    	"0.16",
+    	"0.16",
+    	"0.16",
+    	"0.16",
+    	"0.16",
     ],
     "targetColorFrequency": [
         "0.16",
@@ -42,8 +42,8 @@
             "black": false
     	},
     	{
-    		"x": 6,
-    		"y": 18,
+    		"x": 1,
+    		"y": 12,
     		"prefabName": "Target",
     		"colorIndex": 1,
     		"white": false,
