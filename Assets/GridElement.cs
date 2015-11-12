@@ -238,7 +238,7 @@ public class GridElement : MonoBehaviour {
 	}
 	
 	private bool AbleToExplode(){
-		return(alive && !black && (white || colorIndex != colors.Length));
+		return(alive && !disabled && !black && (white || colorIndex != colors.Length));
 	}
 	
 	private void HandleExplosionWithNoDirection(GridElement neighbor, int inputRefundValue){
@@ -265,7 +265,7 @@ public class GridElement : MonoBehaviour {
 	private void HandleExplosionWithDirection(GridElement neighbor, int inputRefundValue){
 		bool eitherIsWhite = white || neighbor.white;
 	
-		if(eitherIsWhite || ColorMatches (neighbor) || DirectionMatchesNeighbor(explosionDirection, neighbor)){
+		if((eitherIsWhite || ColorMatches (neighbor) || DirectionMatchesNeighbor(explosionDirection, neighbor))){
 			if(colorIndex != neighbor.colorIndex){
 				print("increased value!");
 				refundValue = inputRefundValue + 1;
