@@ -19,7 +19,7 @@ public class GridElement : MonoBehaviour {
 		new Color(1, 0, 1)
 	};
 	public bool canChain = true;
-	private int permanentColorIndex;
+	public int permanentColorIndex;
 	private Direction explosionDirection;
 	private bool readyToExplode = false;
 	private float maxExplosionTimer = .1f;

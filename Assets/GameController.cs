@@ -12,13 +12,13 @@ public class GameController : MonoBehaviour {
 	private static float timeSinceLastEvent = 0;
 	public static float remainingEnergy = 100;
 	public static float energyRequirement = 4;
-	public GameObject[] clusters;
-	public static GameObject nextCluster;
+	public GameObject[] clusterPrefabs;
 	
 	private static GameController instance;
 	public static int randomizedTargetCount = 0;
 	public static int remainingTargetCount = 0;
 	public static int randomizedTileCount = 0;
+	public static ArrayList clusters = new ArrayList();
 	
 	private float minX = -2.8f;
 	private float maxX = 2.8f;
@@ -51,7 +51,9 @@ public class GameController : MonoBehaviour {
 			target.transform.parent = GameObject.Find ("Targets").transform;
 		}
 		
-		nextCluster = GenerateNextCluster();
+		clusters.Add (GenerateNextCluster());
+		clusters.Add (GenerateNextCluster());
+		clusters.Add (GenerateNextCluster());
 	}
 	
 	// Update is called once per frame
@@ -86,8 +88,9 @@ public class GameController : MonoBehaviour {
 	}
 	
 	public static GameObject GetNextCluster(){
-		GameObject clusterToReturn = nextCluster;
-		nextCluster = instance.GenerateNextCluster();
+		if(clusters.Count >= 4) clusters.RemoveAt (0);
+		clusters.Add(instance.GenerateNextCluster());
+		GameObject clusterToReturn = clusters[0] as GameObject;
 		return(clusterToReturn);		
 	}
 	
@@ -98,7 +101,7 @@ public class GameController : MonoBehaviour {
 	}
 	
 	private GameObject GenerateNextCluster(){
-		return(Instantiate(clusters[0], new Vector3(-100, -100, 0), Quaternion.identity) as GameObject);
+		return(Instantiate(clusterPrefabs[0], new Vector3(-100, -100, 0), Quaternion.identity) as GameObject);
 	}	
 	private ArrayList CreateRandomizedObjects(GameObject objectToCreate, int numberOfObjects){
 		ArrayList gameObjects = new ArrayList();
