@@ -28,6 +28,9 @@ public class GridElement : MonoBehaviour {
 	private bool permanentColorSet = false;
 	public bool survivesExplosion = false;
 	public bool white = false;
+	public bool black = false;
+	public bool permanentWhite = false;
+	public bool permanentBlack = false;
 	public bool countable = true;
 	private int refundValue = 0;
 	public bool disabled = false;
@@ -49,10 +52,16 @@ public class GridElement : MonoBehaviour {
 		if(!permanentColorSet) {
 			permanentColorIndex = colorIndex;
 			permanentColorSet = true;
+			permanentWhite = white; 
+			permanentBlack = black;
 		}
 		
 		if(insertedIntoMatrix){
-			if(permanentColorSet) permanentColorIndex = colorIndex;
+			if(permanentColorSet) {
+				permanentColorIndex = colorIndex;
+				permanentWhite = white;
+				permanentBlack = black;
+			}
 			if(canBeReplaced) canBeReplaced = !disabled;
 		}else{
 			ManageHoverState ();
@@ -141,6 +150,8 @@ public class GridElement : MonoBehaviour {
 			color = Color.gray;
 		}else if(white){
 			color = Color.white;
+		}else if(black){
+			color = Color.black;
 		}
 	}
 	
@@ -158,14 +169,31 @@ public class GridElement : MonoBehaviour {
 	private void UpdateHoverColor(){
 		GameObject objectAtPosition = matrix.ElementAtVectorPosition(transform.position);
 		disabled = false;
+		white = permanentWhite;
+		black = permanentBlack;
 		if(objectAtPosition){
-			int foundColorIndex = objectAtPosition.GetComponent<GridElement>().colorIndex;
-			int mixedColorIndex = MixColorIndexes(permanentColorIndex, foundColorIndex);
-			disabled = (mixedColorIndex >= colors.Length);
-			if(disabled){
+			if((permanentBlack && objectAtPosition.GetComponent<GridElement>().permanentWhite) || (permanentWhite && objectAtPosition.GetComponent<GridElement>().permanentBlack)){
+				disabled = true;
 				UpdateColor ();
+			}else if(!permanentBlack && objectAtPosition.GetComponent<GridElement>().permanentBlack){
+				black = true;
+				UpdateColor ();
+			}else if(permanentBlack && !objectAtPosition.GetComponent<GridElement>().permanentBlack){
+				//do nothing
+			}else if(!permanentWhite && objectAtPosition.GetComponent<GridElement>().permanentWhite){
+				UpdateColorByIndex (permanentColorIndex);
+			}else if(permanentWhite && !objectAtPosition.GetComponent<GridElement>().permanentWhite){
+				white = false;
+				UpdateColorByIndex (objectAtPosition.GetComponent<GridElement>().permanentColorIndex);
 			}else{
-				UpdateColorByIndex (mixedColorIndex);
+				int foundColorIndex = objectAtPosition.GetComponent<GridElement>().colorIndex;
+				int mixedColorIndex = MixColorIndexes(permanentColorIndex, foundColorIndex);
+				disabled = (mixedColorIndex >= colors.Length);
+				if(disabled){
+					UpdateColor ();
+				}else{
+					UpdateColorByIndex (mixedColorIndex);
+				}
 			}
 		}else{
 			UpdateColorByIndex (permanentColorIndex);
@@ -210,7 +238,7 @@ public class GridElement : MonoBehaviour {
 	}
 	
 	private bool AbleToExplode(){
-		return(alive && (white || colorIndex != colors.Length));
+		return(alive && !black && (white || colorIndex != colors.Length));
 	}
 	
 	private void HandleExplosionWithNoDirection(GridElement neighbor, int inputRefundValue){

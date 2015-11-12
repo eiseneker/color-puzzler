@@ -39,6 +39,22 @@ public class LevelLoader : MonoBehaviour {
 			Cluster.colorVariance = json["clusterColorVariance"].AsFloat;
 		}
 		
+		if(json["tileWhiteFrequency"] != null){
+			Tile.whiteProbability = json["tileWhiteFrequency"].AsFloat;
+		}
+		
+		if(json["clusterWhiteFrequency"] != null){
+			Cluster.whiteProbability = json["clusterWhiteFrequency"].AsFloat;
+		}
+		
+		if(json["tileBlackFrequency"] != null){
+			Tile.blackProbability = json["tileBlackFrequency"].AsFloat;
+		}
+		
+		if(json["clusterBlackFrequency"] != null){
+			Cluster.blackProbability = json["clusterBlackFrequency"].AsFloat;
+		}
+		
 		if(json["grid"] != null){
 			JSONArray elements = json["grid"].AsArray;
 			for(int i = 0; i < elements.Count; i++) {

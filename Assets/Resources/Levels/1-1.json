@@ -2,7 +2,7 @@
     "name": "Hello World!",
     "randomizedTileCount": 30,
     "randomizedTargetCount": 20,
-    "remainingEnergy": 5,
+    "remainingEnergy": 100,
     "tileColorFrequency": [
     	"0.16",
     	"0.16",
@@ -11,8 +11,8 @@
     	"0.16",
     	"0.16"
     ],
-    "tileWhiteFrequency": "0.4",
-    "tileBlackFrequency": "0.4",
+    "tileWhiteFrequency": "0",
+    "tileBlackFrequency": "0",
     "clusterColorFrequency": [
     	"0.16",
     	"0.16",
@@ -29,8 +29,8 @@
         "0.16",
         "0.16",
     ],
-    "clusterWhiteFrequency": "0.4",
-    "clusterBlackFrequency": "0.4",
+    "clusterWhiteFrequency": "0",
+    "clusterBlackFrequency": "1",
     "clusterColorVariance": "0",
     "grid": [
     	{

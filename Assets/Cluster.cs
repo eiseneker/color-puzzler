@@ -7,6 +7,8 @@ public class Cluster : MonoBehaviour {
 	private ArrayList tilesToRandomize = new ArrayList();
 	
 	public static float[] colorProbability = new float[] { 1.666f, 1.666f, 1.666f, 1.666f, 1.666f, 1.666f };
+	public static float whiteProbability = 0;
+	public static float blackProbability = 0;
 	
 	public static float colorVariance = .25f;
 	private int replaceIndex;
@@ -37,6 +39,13 @@ public class Cluster : MonoBehaviour {
 				tile.GetComponent<GridElement>().colorIndex = lastColorIndex;
 				tile.GetComponent<GridElement>().colorSet = true;
 			}else{
+				float random = Random.value;
+				if(random < whiteProbability){
+					tile.GetComponent<GridElement>().white = true;
+				}
+				if(random >= whiteProbability && random < (whiteProbability + blackProbability)){
+					tile.GetComponent<GridElement>().black = true;
+				}
 				tile.GetComponent<GridElement>().colorIndex = GridElement.RandomizedColorIndex(colorProbability);
 				tile.GetComponent<GridElement>().colorSet = true;
 			}
