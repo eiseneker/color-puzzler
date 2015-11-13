@@ -13,27 +13,29 @@ public class Pointer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(cluster){
-			Vector3 newPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-			newPosition.z = 1;
-			cluster.transform.position = newPosition;
-			grid.AlignTransform(cluster.transform);
-			
-			if(Input.GetMouseButtonDown(0)){
-				InsertHere();
-			}
-		}else{
-			if(!GameController.Frozen ()){
-				Cluster returnedCluster = GameController.GetNextCluster().GetComponent<Cluster>();
-				returnedCluster.transform.position = transform.position;
-				if(GameController.remainingEnergy >= GameController.EnergyRequirement()){
-					Vector3 newPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-					newPosition.z = 1;
-					cluster = returnedCluster;
-					grid.AlignTransform(cluster.transform);
-				}else{
-					Destroy (returnedCluster.gameObject);
-					GameController.LoadLoseScreen();
+		if(!HUDDrawer.drawerOut){
+			if(cluster){
+				Vector3 newPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+				newPosition.z = 1;
+				cluster.transform.position = newPosition;
+				grid.AlignTransform(cluster.transform);
+				
+				if(Input.GetMouseButtonDown(0)){
+					InsertHere();
+				}
+			}else{
+				if(!GameController.Frozen ()){
+					Cluster returnedCluster = GameController.GetNextCluster().GetComponent<Cluster>();
+					returnedCluster.transform.position = transform.position;
+					if(GameController.remainingEnergy >= GameController.EnergyRequirement()){
+						Vector3 newPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+						newPosition.z = 1;
+						cluster = returnedCluster;
+						grid.AlignTransform(cluster.transform);
+					}else{
+						Destroy (returnedCluster.gameObject);
+						GameController.LoadLoseScreen();
+					}
 				}
 			}
 		}

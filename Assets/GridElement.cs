@@ -261,12 +261,10 @@ public class GridElement : MonoBehaviour {
 					if(newDirection != Direction.None && !colorMatchesNeighbor){
 						newRefundValue += 1;
 					}
-					print ("refunding " + refundValue + "... from " + colorIndex + " to " + neighbor.colorIndex);
 					neighbor.SetExplode(newDirection, newRefundValue);
 				}
 			}else{
 				if(eitherIsWhite || colorMatchesNeighbor){
-					print ("refunding " + refundValue + "... from " + colorIndex + " to " + neighbor.colorIndex);
 					neighbor.SetExplode(Direction.None, newRefundValue);
 				}
 			}
@@ -282,7 +280,6 @@ public class GridElement : MonoBehaviour {
 				if(colorIndex != neighbor.colorIndex){
 					newRefundValue += 1;
 				}
-				print ("refunding " + refundValue + "... from " + colorIndex + " to " + neighbor.colorIndex);
 				neighbor.SetExplode(explosionDirection, newRefundValue);
 			}
 		

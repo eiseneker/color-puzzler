@@ -5,6 +5,7 @@ public class HUDDrawer : MonoBehaviour {
 
 	private bool canMove = true;
 	private bool movesUpNext = true;
+	public static bool drawerOut;
 
 	public void MoveDrawer(){
 		if(canMove){
@@ -18,7 +19,9 @@ public class HUDDrawer : MonoBehaviour {
 	}
 	
 	public void ResetMoveStatus(){
+		drawerOut = movesUpNext;
 		movesUpNext = !movesUpNext;
 		canMove = true;
+		
 	}
 }
