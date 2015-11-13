@@ -10,6 +10,9 @@ public class Tile : MonoBehaviour {
 	public static float blackProbability = 0;
 	
 	public Sprite[] sprites;
+	public Sprite spriteDisabled;
+	public Sprite spriteWhite;
+	public Sprite spriteBlack;
 	private SpriteRenderer spriteOverlay;
 	
 	void Start(){
@@ -39,8 +42,20 @@ public class Tile : MonoBehaviour {
 	}
 	
 	public void UpdateSprite(){
-		print (spriteOverlay);
-		SpriteOverlay().sprite = sprites[GetComponent<GridElement>().colorIndex];
+		GridElement gridElement = GetComponent<GridElement>();
+		if(gridElement.disabled){
+			SpriteOverlay().sprite = spriteDisabled;
+			SpriteOverlay ().color = Color.black;
+		}else if(gridElement.white){
+			SpriteOverlay().sprite = spriteWhite;
+			SpriteOverlay ().color = Color.white;
+		}else if(gridElement.black){
+			SpriteOverlay().sprite = spriteBlack;
+			SpriteOverlay ().color = new Color(.3f, .3f, .3f);
+		}else{
+			SpriteOverlay().sprite = sprites[GetComponent<GridElement>().colorIndex];
+			SpriteOverlay ().color = Color.black;
+		}
 	}
 	
 	private SpriteRenderer SpriteOverlay(){
