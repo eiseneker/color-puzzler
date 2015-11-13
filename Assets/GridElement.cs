@@ -15,8 +15,8 @@ public class GridElement : MonoBehaviour {
 		new Color(1, .5f, 0),
 		Color.yellow,
 		Color.green,
-		Color.blue,
-		new Color(1, 0, 1)
+		new Color(.2f, .5f, 1),
+		new Color(.9f, 0, .9f)
 	};
 	public bool canChain = true;
 	public int permanentColorIndex;
@@ -43,7 +43,7 @@ public class GridElement : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		UpdateColorByIndex (colorIndex);
-		GetComponent<MeshRenderer>().material.SetColor ("_Color", color);
+		SetColor();
 	}
 	
 	private Matrix Matrix(){
@@ -51,6 +51,14 @@ public class GridElement : MonoBehaviour {
 			matrix = GameObject.Find ("Grid").GetComponent<Matrix>();
 		}
 		return(matrix);
+	}
+	
+	private void SetColor(){
+		GetComponent<MeshRenderer>().material.SetColor ("_Color", color);
+		Tile tile = GetComponent<Tile>();
+		if(tile){
+			tile.UpdateSprite();
+		}
 	}
 	
 	// Update is called once per frame
@@ -77,7 +85,7 @@ public class GridElement : MonoBehaviour {
 			if(colorDelay > 0){
 				colorDelay -= Time.deltaTime;
 			}else{
-				GetComponent<MeshRenderer>().material.SetColor ("_Color", color);
+				SetColor ();
 			}
 		}
 		

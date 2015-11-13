@@ -1,6 +1,6 @@
 {
     "name": "Hello World!",
-    "randomizedTileCount": 0,
+    "randomizedTileCount": 30,
     "randomizedTargetCount": 0,
     "remainingEnergy": 100,
     "energyRequirementFactor": 4,
@@ -15,12 +15,12 @@
     "tileWhiteFrequency": "0",
     "tileBlackFrequency": "0",
     "clusterColorFrequency": [
-    	"0.33",
-    	"0.33",
     	"0.17",
     	"0.17",
-    	"0",
-    	"0",
+    	"0.17",
+    	"0.17",
+    	"0.17",
+    	"0.17",
     ],
     "targetColorFrequency": [
         "0.16",

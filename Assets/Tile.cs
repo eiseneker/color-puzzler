@@ -9,6 +9,9 @@ public class Tile : MonoBehaviour {
 	public static float whiteProbability = 0;
 	public static float blackProbability = 0;
 	
+	public Sprite[] sprites;
+	private SpriteRenderer spriteOverlay;
+	
 	void Start(){
 		if(!GetComponent<GridElement>().colorSet){
 			float random = Random.value;
@@ -33,6 +36,18 @@ public class Tile : MonoBehaviour {
 	
 	public void EnterTransitionState(){
 		GetComponent<Animator>().SetBool ("transitioning", true);
+	}
+	
+	public void UpdateSprite(){
+		print (spriteOverlay);
+		SpriteOverlay().sprite = sprites[GetComponent<GridElement>().colorIndex];
+	}
+	
+	private SpriteRenderer SpriteOverlay(){
+		if(spriteOverlay == null){
+			spriteOverlay = transform.Find ("Overlay").GetComponent<SpriteRenderer>();
+		}
+		return(spriteOverlay);
 	}
 	
 }

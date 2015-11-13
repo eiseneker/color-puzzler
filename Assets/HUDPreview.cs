@@ -6,15 +6,6 @@ public class HUDPreview : MonoBehaviour {
 
 	public int index;
 	public int clusterIndex;
-	
-	private Color[] colors = {
-		Color.red,
-		new Color(1, .5f, 0),
-		Color.yellow,
-		Color.green,
-		Color.blue,
-		new Color(1, 0, 1)
-	};
 
 	// Use this for initialization
 	void Start () {
@@ -33,7 +24,7 @@ public class HUDPreview : MonoBehaviour {
 					}else if(tile.GetComponent<GridElement>().permanentBlack){
 						GetComponent<Image>().color = Color.black;
 					}else{
-						GetComponent<Image>().color = colors[tile.GetComponent<GridElement>().permanentColorIndex];
+						GetComponent<Image>().color = GridElement.colors[tile.GetComponent<GridElement>().permanentColorIndex];
 					}
 				}else{
 					GetComponent<Image>().color = Color.black;
