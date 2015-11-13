@@ -15,12 +15,12 @@
     "tileWhiteFrequency": "0",
     "tileBlackFrequency": "0",
     "clusterColorFrequency": [
-    	"0.16",
-    	"0.16",
-    	"0.16",
-    	"0.16",
-    	"0.16",
-    	"0.16",
+    	"0.33",
+    	"0.33",
+    	"0.33",
+    	"0",
+    	"0",
+    	"0",
     ],
     "targetColorFrequency": [
         "0.16",
@@ -30,8 +30,8 @@
         "0.16",
         "0.16",
     ],
-    "clusterWhiteFrequency": "0.05",
-    "clusterBlackFrequency": "0.05",
+    "clusterWhiteFrequency": "0.0",
+    "clusterBlackFrequency": "0.0",
     "clusterColorVariance": "0",
     "grid": [
     	{

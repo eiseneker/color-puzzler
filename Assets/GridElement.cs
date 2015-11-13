@@ -21,7 +21,7 @@ public class GridElement : MonoBehaviour {
 	public bool canChain = true;
 	public int permanentColorIndex;
 	private Direction explosionDirection;
-	private bool readyToExplode = false;
+	protected bool readyToExplode = false;
 	private float maxExplosionTimer = .1f;
 	private float currentExplosionTimer;
 	public bool colorSet = false;
@@ -248,34 +248,44 @@ public class GridElement : MonoBehaviour {
 	}
 	
 	private void HandleExplosionWithNoDirection(GridElement neighbor, int inputRefundValue){
+		int newRefundValue = inputRefundValue;
 		bool eitherIsWhite = white || neighbor.white;
 		bool colorMatchesNeighbor = ColorMatches(neighbor);
 	
-		if(canChain){
-			Direction newDirection = GetDirection(colorIndex, neighbor.colorIndex);
-			bool newCascade = newDirection != Direction.None;
-			bool neighborIsSame = ColorMatches (neighbor) && newDirection == Direction.None;
-			if(eitherIsWhite || newCascade || neighborIsSame){
-				if(newDirection != Direction.None && !colorMatchesNeighbor){
-					refundValue = inputRefundValue + 1;
+		if(!neighbor.readyToExplode){
+			if(canChain){
+				Direction newDirection = GetDirection(colorIndex, neighbor.colorIndex);
+				bool newCascade = newDirection != Direction.None;
+				bool neighborIsSame = ColorMatches (neighbor) && newDirection == Direction.None;
+				if(eitherIsWhite || newCascade || neighborIsSame){
+					if(newDirection != Direction.None && !colorMatchesNeighbor){
+						newRefundValue += 1;
+					}
+					print ("refunding " + refundValue + "... from " + colorIndex + " to " + neighbor.colorIndex);
+					neighbor.SetExplode(newDirection, newRefundValue);
 				}
-				neighbor.SetExplode(newDirection, refundValue);
-			}
-		}else{
-			if(eitherIsWhite || colorMatchesNeighbor){
-				neighbor.SetExplode(Direction.None, refundValue);
+			}else{
+				if(eitherIsWhite || colorMatchesNeighbor){
+					print ("refunding " + refundValue + "... from " + colorIndex + " to " + neighbor.colorIndex);
+					neighbor.SetExplode(Direction.None, newRefundValue);
+				}
 			}
 		}
 	}
 	
 	private void HandleExplosionWithDirection(GridElement neighbor, int inputRefundValue){
 		bool eitherIsWhite = white || neighbor.white;
-	
-		if((eitherIsWhite || ColorMatches (neighbor) || DirectionMatchesNeighbor(explosionDirection, neighbor))){
-			if(colorIndex != neighbor.colorIndex){
-				refundValue = inputRefundValue + 1;
+		int newRefundValue = inputRefundValue;
+		
+		if(!neighbor.readyToExplode){
+			if((eitherIsWhite || ColorMatches (neighbor) || DirectionMatchesNeighbor(explosionDirection, neighbor))){
+				if(colorIndex != neighbor.colorIndex){
+					newRefundValue += 1;
+				}
+				print ("refunding " + refundValue + "... from " + colorIndex + " to " + neighbor.colorIndex);
+				neighbor.SetExplode(explosionDirection, newRefundValue);
 			}
-			neighbor.SetExplode(explosionDirection, refundValue);
+		
 		}
 	}
 	
