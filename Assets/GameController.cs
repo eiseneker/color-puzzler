@@ -11,7 +11,7 @@ public class GameController : MonoBehaviour {
 	public static bool textActive = false;
 	private static float timeSinceLastEvent = 0;
 	public static float remainingEnergy = 100;
-	public static float energyRequirement = 4;
+	public static float energyRequirementFactor = 1;
 	public GameObject[] clusterPrefabs;
 	
 	private static GameController instance;
@@ -129,5 +129,9 @@ public class GameController : MonoBehaviour {
 			}
 		}
 		return(gameObjects);
+	}
+	
+	public static float EnergyRequirement(){
+		return(Mathf.Ceil (turnCount + 1 / 5) + 1 * energyRequirementFactor);
 	}
 }

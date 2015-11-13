@@ -26,7 +26,7 @@ public class Pointer : MonoBehaviour {
 			if(!GameController.Frozen ()){
 				Cluster returnedCluster = GameController.GetNextCluster().GetComponent<Cluster>();
 				returnedCluster.transform.position = transform.position;
-				if(GameController.remainingEnergy >= GameController.energyRequirement){
+				if(GameController.remainingEnergy >= GameController.EnergyRequirement()){
 					Vector3 newPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 					newPosition.z = 1;
 					cluster = returnedCluster;
@@ -69,7 +69,7 @@ public class Pointer : MonoBehaviour {
 			
 			EventController.tilesToReviewForLevel1 = tiles;
 			EventController.tilesToReviewForBombs = tiles;
-			GameController.remainingEnergy -= GameController.energyRequirement;
+			GameController.remainingEnergy -= GameController.EnergyRequirement ();
 			GameController.turnCount++;
 		}
 	}

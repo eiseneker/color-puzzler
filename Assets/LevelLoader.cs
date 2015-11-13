@@ -50,6 +50,10 @@ public class LevelLoader : MonoBehaviour {
 			Cluster.blackProbability = json["clusterBlackFrequency"].AsFloat;
 		}
 		
+		if(json["energyRequirementFactor"] != null){
+			GameController.energyRequirementFactor = json["energyRequirementFactor"].AsFloat;
+		}
+		
 		if(json["grid"] != null){
 			JSONArray elements = json["grid"].AsArray;
 			for(int i = 0; i < elements.Count; i++) {

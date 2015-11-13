@@ -23,7 +23,7 @@ public class HUDCounter : MonoBehaviour {
 		}
 		
 		underlayAmount = measurableEnergy/100;
-		overlayAmount = (measurableEnergy - GameController.energyRequirement)/100;
+		overlayAmount = (measurableEnergy - GameController.EnergyRequirement())/100;
 		
 		underlay.fillAmount = underlayAmount;
 		overlay.fillAmount = overlayAmount;

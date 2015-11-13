@@ -42,7 +42,6 @@ public class GridElement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		print ("GridElement start");
 		UpdateColorByIndex (colorIndex);
 		GetComponent<MeshRenderer>().material.SetColor ("_Color", color);
 	}

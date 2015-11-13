@@ -3,6 +3,7 @@
     "randomizedTileCount": 50,
     "randomizedTargetCount": 20,
     "remainingEnergy": 100,
+    "energyRequirementFactor": 4,
     "tileColorFrequency": [
     	"0.16",
     	"0.16",
