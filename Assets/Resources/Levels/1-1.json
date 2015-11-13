@@ -1,7 +1,7 @@
 {
     "name": "Hello World!",
-    "randomizedTileCount": 0,
-    "randomizedTargetCount": 0,
+    "randomizedTileCount": 50,
+    "randomizedTargetCount": 20,
     "remainingEnergy": 100,
     "tileColorFrequency": [
     	"0.16",

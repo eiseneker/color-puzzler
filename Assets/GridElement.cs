@@ -5,7 +5,7 @@ public class GridElement : MonoBehaviour {
 	
 	public int xPosition;
 	public int yPosition;
-	public Matrix matrix;
+	private Matrix matrix;
 	private bool alive = true;
 	public Color color;
 	public int colorIndex;
@@ -42,9 +42,16 @@ public class GridElement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		matrix = GameObject.Find ("Grid").GetComponent<Matrix>();
+		print ("GridElement start");
 		UpdateColorByIndex (colorIndex);
 		GetComponent<MeshRenderer>().material.SetColor ("_Color", color);
+	}
+	
+	private Matrix Matrix(){
+		if(matrix == null){
+			matrix = GameObject.Find ("Grid").GetComponent<Matrix>();
+		}
+		return(matrix);
 	}
 	
 	// Update is called once per frame
@@ -106,13 +113,13 @@ public class GridElement : MonoBehaviour {
 	public ArrayList CardinalNeighbors(){
 		ArrayList neighbors = new ArrayList();
 		GameObject neighbor;
-		neighbor = matrix.ElementAtArrayPosition (xPosition - 1, yPosition);
+		neighbor = Matrix().ElementAtArrayPosition (xPosition - 1, yPosition);
 		neighbors.Add (neighbor);
-		neighbor = matrix.ElementAtArrayPosition (xPosition + 1, yPosition);
+		neighbor = Matrix().ElementAtArrayPosition (xPosition + 1, yPosition);
 		neighbors.Add (neighbor);
-		neighbor = matrix.ElementAtArrayPosition (xPosition, yPosition - 1);
+		neighbor = Matrix().ElementAtArrayPosition (xPosition, yPosition - 1);
 		neighbors.Add (neighbor);
-		neighbor = matrix.ElementAtArrayPosition (xPosition, yPosition + 1);
+		neighbor = Matrix().ElementAtArrayPosition (xPosition, yPosition + 1);
 		neighbors.Add (neighbor);
 		return(neighbors);
 	}
@@ -120,21 +127,21 @@ public class GridElement : MonoBehaviour {
 	public ArrayList AllNeighbors(){
 		ArrayList neighbors = new ArrayList();
 		GameObject neighbor;
-		neighbor = matrix.ElementAtArrayPosition (xPosition, yPosition + 1);
+		neighbor = Matrix().ElementAtArrayPosition (xPosition, yPosition + 1);
 		neighbors.Add (neighbor);
-		neighbor = matrix.ElementAtArrayPosition (xPosition + 1, yPosition + 1);
+		neighbor = Matrix().ElementAtArrayPosition (xPosition + 1, yPosition + 1);
 		neighbors.Add (neighbor);
-		neighbor = matrix.ElementAtArrayPosition (xPosition + 1, yPosition);
+		neighbor = Matrix().ElementAtArrayPosition (xPosition + 1, yPosition);
 		neighbors.Add (neighbor);
-		neighbor = matrix.ElementAtArrayPosition (xPosition + 1, yPosition - 1);
+		neighbor = Matrix().ElementAtArrayPosition (xPosition + 1, yPosition - 1);
 		neighbors.Add (neighbor);
-		neighbor = matrix.ElementAtArrayPosition (xPosition, yPosition - 1);
+		neighbor = Matrix().ElementAtArrayPosition (xPosition, yPosition - 1);
 		neighbors.Add (neighbor);
-		neighbor = matrix.ElementAtArrayPosition (xPosition - 1, yPosition - 1);
+		neighbor = Matrix().ElementAtArrayPosition (xPosition - 1, yPosition - 1);
 		neighbors.Add (neighbor);
-		neighbor = matrix.ElementAtArrayPosition (xPosition - 1, yPosition);
+		neighbor = Matrix().ElementAtArrayPosition (xPosition - 1, yPosition);
 		neighbors.Add (neighbor);
-		neighbor = matrix.ElementAtArrayPosition (xPosition - 1, yPosition + 1);
+		neighbor = Matrix().ElementAtArrayPosition (xPosition - 1, yPosition + 1);
 		neighbors.Add (neighbor);
 		return(neighbors);
 	}
@@ -158,7 +165,7 @@ public class GridElement : MonoBehaviour {
 	private void ManageHoverState(){
 		Transform lockIcon = transform.Find("X");
 		
-		if(matrix.CanInsertIntoMatrix(gameObject)){
+		if(Matrix ().CanInsertIntoMatrix(gameObject)){
 			UpdateHoverColor();
 			if(lockIcon) lockIcon.gameObject.SetActive(false);
 		}else{
@@ -167,7 +174,7 @@ public class GridElement : MonoBehaviour {
 	}
 	
 	private void UpdateHoverColor(){
-		GameObject objectAtPosition = matrix.ElementAtVectorPosition(transform.position);
+		GameObject objectAtPosition = Matrix ().ElementAtVectorPosition(transform.position);
 		disabled = false;
 		white = permanentWhite;
 		black = permanentBlack;

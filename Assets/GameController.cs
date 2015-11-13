@@ -114,7 +114,14 @@ public class GameController : MonoBehaviour {
 				grid.AlignTransform(tile.transform);
 				success = matrix.InsertIntoMatrix(tile);
 				if(success){
-					gameObjects.Add (tile);
+					foreach(GameObject neighbor in tile.GetComponent<GridElement>().AllNeighbors()){
+						if(neighbor && neighbor.GetComponent<Bomb>()){
+							success = false;
+							Destroy (tile);					
+						}else{
+							gameObjects.Add (tile);
+						}
+					}
 				}else{
 					Destroy (tile);
 				}
