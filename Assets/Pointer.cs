@@ -70,6 +70,7 @@ public class Pointer : MonoBehaviour {
 			EventController.tilesToReviewForLevel1 = tiles;
 			EventController.tilesToReviewForBombs = tiles;
 			GameController.remainingEnergy -= GameController.energyRequirement;
+			GameController.turnCount++;
 		}
 	}
 	

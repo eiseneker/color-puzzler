@@ -18,6 +18,7 @@ public class GameController : MonoBehaviour {
 	public static int randomizedTargetCount = 0;
 	public static int remainingTargetCount = 0;
 	public static int randomizedTileCount = 0;
+	public static int turnCount;
 	public static ArrayList clusters = new ArrayList();
 	
 	private float minX = -2.8f;
