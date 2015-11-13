@@ -24,17 +24,20 @@ public class Pointer : MonoBehaviour {
 					InsertHere();
 				}
 			}else{
-				if(!GameController.Frozen ()){
-					Cluster returnedCluster = GameController.GetNextCluster().GetComponent<Cluster>();
-					returnedCluster.transform.position = transform.position;
-					if(GameController.remainingEnergy >= GameController.EnergyRequirement()){
-						Vector3 newPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-						newPosition.z = 1;
-						cluster = returnedCluster;
-						grid.AlignTransform(cluster.transform);
-					}else{
-						Destroy (returnedCluster.gameObject);
-						GameController.LoadLoseScreen();
+				if(!GameController.Frozen () && !GameController.finished){
+					GameObject nextCluster = GameController.GetNextCluster();
+					if(nextCluster){
+						Cluster returnedCluster = nextCluster.GetComponent<Cluster>();
+						returnedCluster.transform.position = transform.position;
+						if(GameController.remainingEnergy >= GameController.EnergyRequirement()){
+							Vector3 newPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+							newPosition.z = 1;
+							cluster = returnedCluster;
+							grid.AlignTransform(cluster.transform);
+						}else{
+							Destroy (returnedCluster.gameObject);
+							GameController.LoadLoseScreen();
+						}
 					}
 				}
 			}
