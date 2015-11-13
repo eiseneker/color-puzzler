@@ -1,7 +1,7 @@
 {
     "name": "Hello World!",
-    "randomizedTileCount": 50,
-    "randomizedTargetCount": 20,
+    "randomizedTileCount": 0,
+    "randomizedTargetCount": 0,
     "remainingEnergy": 100,
     "energyRequirementFactor": 4,
     "tileColorFrequency": [
@@ -30,8 +30,8 @@
         "0.16",
         "0.16",
     ],
-    "clusterWhiteFrequency": "0",
-    "clusterBlackFrequency": "0",
+    "clusterWhiteFrequency": "0.05",
+    "clusterBlackFrequency": "0.05",
     "clusterColorVariance": "0",
     "grid": [
     	{
@@ -43,7 +43,7 @@
             "black": false
     	},
     	{
-    		"x": 1,
+    		"x": 7,
     		"y": 12,
     		"prefabName": "Target",
     		"colorIndex": 1,

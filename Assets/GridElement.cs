@@ -10,7 +10,7 @@ public class GridElement : MonoBehaviour {
 	public Color color;
 	public int colorIndex;
 	public bool insertedIntoMatrix;
-	private Color[] colors = {
+	public static Color[] colors = {
 		Color.red,
 		new Color(1, .5f, 0),
 		Color.yellow,
