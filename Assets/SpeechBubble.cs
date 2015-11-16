@@ -12,6 +12,7 @@ public class SpeechBubble : MonoBehaviour {
 	public float setWidth;
 	public float setHeight;
 	public bool freezesGameOnDisplay;
+	public string[][] cursorInstructions;
 	
 	private int textBubbleIndex;
 	private float currentTimeBetweenCharacters;
@@ -23,6 +24,7 @@ public class SpeechBubble : MonoBehaviour {
 	private float maxPostFinishDelay = 2f;
 	private float currentPostFinishDelay;
 	private GameObject arrow;
+	private bool cursorStale;
 	
 	public static bool inFreezeState;
 
@@ -52,6 +54,16 @@ public class SpeechBubble : MonoBehaviour {
 				maxHeight = setHeight;
 			}
 			bubble.sizeDelta = new Vector2(maxWidth, maxHeight);
+		}
+		if(!cursorStale && cursorInstructions.Length > textBubbleIndex){
+			if(cursorInstructions[textBubbleIndex] != null){
+				foreach(string friendlyName in cursorInstructions[textBubbleIndex]){
+					GameObject cursorObject = Instantiate (Resources.Load ("Cursor"), Vector3.zero, Quaternion.identity) as GameObject;
+					Cursor cursor = cursorObject.GetComponent<Cursor>();
+					cursor.transform.position = Camera.main.WorldToScreenPoint(GameController.GetElementByName(friendlyName).transform.position);
+				}
+			}
+			cursorStale = true;
 		}
 		if(dismissesSelf && Finished ()){
 			if(currentPostFinishDelay > maxPostFinishDelay){
@@ -86,6 +98,7 @@ public class SpeechBubble : MonoBehaviour {
 		textIndex = 0;
 		textBubbleIndex++;
 		text.text = "";
+		cursorStale = false;
 	}
 	
 	private bool DoneWithPage(){

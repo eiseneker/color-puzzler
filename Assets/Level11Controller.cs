@@ -3,6 +3,10 @@ using System.Collections;
 
 public class Level11Controller : MonoBehaviour, ILevel {
 	public void Invoke(){
+		string[][] cursorInstructions = new string[2][];
+		
+		cursorInstructions[1] = new string[] { "MrTile" };
+	
 		GameObject bubbleObject = Instantiate (Resources.Load ("SpeechBubble"), Vector3.zero, Quaternion.identity) as GameObject;
 		SpeechBubble speechBubble = bubbleObject.GetComponent<SpeechBubble>();
 		speechBubble.setWidth = 400;
@@ -13,11 +17,11 @@ public class Level11Controller : MonoBehaviour, ILevel {
 		speechBubble.dismissable = true;
 		speechBubble.freezesGameOnDisplay = true;
 		speechBubble.transform.position = Camera.main.WorldToScreenPoint(new Vector3(-2, -2, 0));
+		speechBubble.cursorInstructions = cursorInstructions;
 		
 		
 		
-		GameObject cursorObject = Instantiate (Resources.Load ("Cursor"), Vector3.zero, Quaternion.identity) as GameObject;
-		Cursor cursor = cursorObject.GetComponent<Cursor>();
-		cursor.transform.position = Camera.main.WorldToScreenPoint(GameController.GetElementByName("MrTile").transform.position);
+		
 	}
 }
+
