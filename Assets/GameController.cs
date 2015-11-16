@@ -8,7 +8,6 @@ public class GameController : MonoBehaviour {
 	
 	public static bool frozen = true;
 	public static bool finished = false;
-	public static bool textActive = false;
 	private static float timeSinceLastEvent = 0;
 	public static float remainingEnergy = 100;
 	public static float energyRequirementFactor = 1;
@@ -35,7 +34,6 @@ public class GameController : MonoBehaviour {
 		clusters = new ArrayList();
 		turnCount = 0;
 		finished = false;
-		textActive = false;
 		instance = this;
 		matrix = GameObject.Find ("Grid").GetComponent<Matrix>();
 		grid = GameObject.Find ("Grid").GetComponent<GFGrid>();
@@ -58,6 +56,22 @@ public class GameController : MonoBehaviour {
 		clusters.Add (GenerateNextCluster());
 		clusters.Add (GenerateNextCluster());
 		clusters.Add (GenerateNextCluster());
+		
+		ILevel level = GameObject.Find ("LevelController").GetComponentInChildren(typeof(ILevel)) as ILevel;
+		if(level != null){
+			level.Invoke();
+		}
+		
+		GameObject bubbleObject = Instantiate (Resources.Load ("SpeechBubble"), Vector3.zero, Quaternion.identity) as GameObject;
+		SpeechBubble speechBubble = bubbleObject.GetComponent<SpeechBubble>();
+		speechBubble.setWidth = 400;
+		speechBubble.setHeight = 100;
+		speechBubble.textToDisplay = new string[2];
+		speechBubble.textToDisplay[0] = "now then, let's get started!";
+		speechBubble.textToDisplay[1] = "do you know how to play?";
+		speechBubble.dismissable = true;
+		speechBubble.freezesGameOnDisplay = true;
+		speechBubble.transform.position = Camera.main.WorldToScreenPoint(new Vector3(-2, -2, 0));
 	}
 	
 	// Update is called once per frame
@@ -74,7 +88,7 @@ public class GameController : MonoBehaviour {
 	}
 	
 	public static bool Frozen(){
-		return(frozen || finished || textActive);
+		return(frozen || finished || SpeechBubble.inFreezeState);
 	}
 	
 	public static void ResetEventTimer(){

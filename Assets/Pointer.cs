@@ -13,7 +13,8 @@ public class Pointer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(!HUDDrawer.drawerOut){
+		print ("get my pointer on!");
+		if(!HUDDrawer.drawerOut && !SpeechBubble.inFreezeState){
 			if(cluster){
 				Vector3 newPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 				newPosition.z = 1;

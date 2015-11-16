@@ -10,9 +10,11 @@ public class GameCamera : MonoBehaviour {
 		
 		GameObject bubbleObject = Instantiate (Resources.Load ("SpeechBubble"), Vector3.zero, Quaternion.identity) as GameObject;
 		SpeechBubble speechBubble = bubbleObject.GetComponent<SpeechBubble>();
-		speechBubble.textToDisplay = "there's always tomorrow,\ni guess...";
+		speechBubble.textToDisplay = new string[1];
+		speechBubble.textToDisplay[0] = "there's always tomorrow,\ni guess...";
 		speechBubble.dismissable = false;
 		speechBubble.transform.position = GetComponent<Camera>().WorldToScreenPoint(new Vector3(-2, -2, 0));
+		speechBubble.freezesGameOnDisplay = true;
 	}
 	
 	public void ShowWin(){
@@ -20,8 +22,10 @@ public class GameCamera : MonoBehaviour {
 		
 		GameObject bubbleObject = Instantiate (Resources.Load ("SpeechBubble"), Vector3.zero, Quaternion.identity) as GameObject;
 		SpeechBubble speechBubble = bubbleObject.GetComponent<SpeechBubble>();
-		speechBubble.textToDisplay = "you're pretty good";
+		speechBubble.textToDisplay = new string[1];
+		speechBubble.textToDisplay[0] = "you're pretty good";
 		speechBubble.dismissable = false;
 		speechBubble.transform.position = GetComponent<Camera>().WorldToScreenPoint(new Vector3(-2, -2, 0));
+		speechBubble.freezesGameOnDisplay = true;
 	}
 }
