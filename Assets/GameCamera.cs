@@ -14,7 +14,6 @@ public class GameCamera : MonoBehaviour {
 		speechBubble.textToDisplay[0] = "there's always tomorrow,\ni guess...";
 		speechBubble.dismissable = false;
 		speechBubble.transform.position = GetComponent<Camera>().WorldToScreenPoint(new Vector3(-2, -2, 0));
-		speechBubble.freezesGameOnDisplay = true;
 	}
 	
 	public void ShowWin(){
@@ -26,6 +25,5 @@ public class GameCamera : MonoBehaviour {
 		speechBubble.textToDisplay[0] = "you're pretty good";
 		speechBubble.dismissable = false;
 		speechBubble.transform.position = GetComponent<Camera>().WorldToScreenPoint(new Vector3(-2, -2, 0));
-		speechBubble.freezesGameOnDisplay = true;
 	}
 }

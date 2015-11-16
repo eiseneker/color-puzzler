@@ -25,6 +25,7 @@ public class SpeechBubble : MonoBehaviour {
 	private float currentPostFinishDelay;
 	private GameObject arrow;
 	private bool cursorStale;
+	private ArrayList cursors;
 	
 	public static bool inFreezeState;
 
@@ -37,6 +38,7 @@ public class SpeechBubble : MonoBehaviour {
 		transform.parent = speech.transform;
 		arrow = transform.Find ("Arrow").gameObject;
 		inFreezeState = freezesGameOnDisplay;
+		cursors = new ArrayList();
 	}
 	
 	// Update is called once per frame
@@ -55,12 +57,13 @@ public class SpeechBubble : MonoBehaviour {
 			}
 			bubble.sizeDelta = new Vector2(maxWidth, maxHeight);
 		}
-		if(!cursorStale && cursorInstructions.Length > textBubbleIndex){
+		if(!cursorStale && cursorInstructions != null && cursorInstructions.Length > textBubbleIndex){
 			if(cursorInstructions[textBubbleIndex] != null){
 				foreach(string friendlyName in cursorInstructions[textBubbleIndex]){
 					GameObject cursorObject = Instantiate (Resources.Load ("Cursor"), Vector3.zero, Quaternion.identity) as GameObject;
 					Cursor cursor = cursorObject.GetComponent<Cursor>();
 					cursor.transform.position = Camera.main.WorldToScreenPoint(GameController.GetElementByName(friendlyName).transform.position);
+					cursors.Add (cursor.gameObject);
 				}
 			}
 			cursorStale = true;
@@ -81,6 +84,9 @@ public class SpeechBubble : MonoBehaviour {
 	
 	public void DismissMe(){
 		if(dismissable && Finished()){
+			foreach(GameObject cursor in cursors){
+				Destroy (cursor);
+			}
 			if(freezesGameOnDisplay) inFreezeState = false;
 			Destroy (gameObject);
 		}
@@ -99,6 +105,10 @@ public class SpeechBubble : MonoBehaviour {
 		textBubbleIndex++;
 		text.text = "";
 		cursorStale = false;
+		foreach(GameObject cursor in cursors){
+			Destroy (cursor);
+		}
+		cursors.Clear ();
 	}
 	
 	private bool DoneWithPage(){
