@@ -35,12 +35,13 @@
     "clusterColorVariance": "0",
     "grid": [
     	{
-    		"x": 0,
+    		"x": 3,
     		"y": 3,
     		"prefabName": "Tile",
     		"colorIndex": 0,
     		"white": false,
-            "black": false
+            "black": false,
+            "friendlyName": "MrTile"
     	},
     	{
     		"x": 7,
@@ -48,7 +49,8 @@
     		"prefabName": "Target",
     		"colorIndex": 1,
     		"white": false,
-            "black": false
+            "black": false,
+            "friendlyName": "MrTarget"
     	},
     	{
     		"x": 7,

@@ -19,6 +19,7 @@ public class GameController : MonoBehaviour {
 	public static int randomizedTileCount = 0;
 	public static int turnCount;
 	public static ArrayList clusters;
+	public static ArrayList namedElements;
 	
 	private float minX = -2.8f;
 	private float maxX = 2.8f;
@@ -29,8 +30,22 @@ public class GameController : MonoBehaviour {
 		Application.LoadLevel ("Game");
 	}
 	
+	public static GridElement GetElementByName(string friendlyName){
+		GridElement elementToReturn = null;
+		print ("list o friendlies:");
+		foreach(GridElement element in namedElements){
+			print (element);
+			if(element.friendlyName == friendlyName){
+				print("found one!");
+				elementToReturn = element;
+			}
+		}
+		return(elementToReturn);
+	}
+	
 	// Use this for initialization
 	void Start () {
+		namedElements = new ArrayList();
 		clusters = new ArrayList();
 		turnCount = 0;
 		finished = false;

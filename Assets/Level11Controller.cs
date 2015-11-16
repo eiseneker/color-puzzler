@@ -18,6 +18,6 @@ public class Level11Controller : MonoBehaviour, ILevel {
 		
 		GameObject cursorObject = Instantiate (Resources.Load ("Cursor"), Vector3.zero, Quaternion.identity) as GameObject;
 		Cursor cursor = cursorObject.GetComponent<Cursor>();
-		cursor.transform.position = Camera.main.WorldToScreenPoint(new Vector3(-2, -2, 0));
+		cursor.transform.position = Camera.main.WorldToScreenPoint(GameController.GetElementByName("MrTile").transform.position);
 	}
 }

@@ -72,6 +72,11 @@ public class LevelLoader : MonoBehaviour {
 				if(element["survivesExplosion"] != null){
 					newObject.GetComponent<GridElement>().survivesExplosion = element["survivesExplosion"].AsBool;
 				}
+				if(element["friendlyName"] != null){
+					newObject.GetComponent<GridElement>().friendlyName = element["friendlyName"];
+					GameController.namedElements.Add (newObject.GetComponent<GridElement>());
+					print ("added to friendly list");
+				}
 				matrix.InsertIntoMatrix (newObject);
 			}
 		}

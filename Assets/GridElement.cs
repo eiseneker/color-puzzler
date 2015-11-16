@@ -37,6 +37,7 @@ public class GridElement : MonoBehaviour {
 	private float colorDelay;
 	private bool delayedColorSet = true;
 	public bool canBeReplaced;
+	public string friendlyName;
 	
 	public enum Direction { None, Forward, Backward };
 
