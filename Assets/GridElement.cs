@@ -175,9 +175,15 @@ public class GridElement : MonoBehaviour {
 		
 		if(Matrix ().CanInsertIntoMatrix(gameObject)){
 			UpdateHoverColor();
-			if(lockIcon) lockIcon.gameObject.SetActive(false);
+			if(lockIcon){
+				lockIcon.gameObject.SetActive(false);
+				GetComponent<MeshRenderer>().enabled = true;
+			}
 		}else{
-			if(lockIcon) lockIcon.gameObject.SetActive(true);
+			if(lockIcon){
+				lockIcon.gameObject.SetActive(true);
+				GetComponent<MeshRenderer>().enabled = false;
+			}
 		}
 	}
 	
