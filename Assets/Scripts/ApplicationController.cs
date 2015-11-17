@@ -13,12 +13,19 @@ public class ApplicationController : MonoBehaviour {
 	
 	public void GoToLevel(string level){
 		levelToLoad = level;
-		Application.LoadLevel("Game");
+		Transition.FadeOut ();
+		
+		Invoke ("LoadGame", 3);
 	}
 	
 	public void GoToLevelSelect(){
 		Transition.FadeOut ();
+		
 		Invoke ("LoadLevelSelect", 3);
+	}
+	
+	private void LoadGame(){
+		Application.LoadLevel("Game");
 	}
 	
 	private void LoadLevelSelect(){
