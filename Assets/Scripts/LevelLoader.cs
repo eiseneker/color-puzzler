@@ -85,6 +85,8 @@ public class LevelLoader : MonoBehaviour {
 		
 		GameObject levelController = Instantiate(Resources.Load ("Levels/Level"+levelNumber+"Controller"), Vector3.zero, Quaternion.identity) as GameObject;
 		levelController.transform.parent = GameObject.Find ("LevelController").transform;
+		
+		LevelCard.SetLevel(levelNumber, json["name"]);
 	}
 	
 	private static float[] GetProbabilityArray(JSONArray jsonArray){

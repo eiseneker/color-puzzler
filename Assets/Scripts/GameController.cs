@@ -26,6 +26,7 @@ public class GameController : MonoBehaviour {
 	private float maxX;
 	private float minY;
 	private float maxY;
+	private bool levelCardActivated;
 	
 	public void ReplayLevel(){
 		Transition.FadeOut ();
@@ -96,12 +97,15 @@ public class GameController : MonoBehaviour {
 					LoadWinScreen();
 				}
 			}
-		}else if(Transition.finished){
+		}else if(Transition.finished && LevelCard.finished){
 			ILevel level = GameObject.Find ("LevelController").GetComponentInChildren(typeof(ILevel)) as ILevel;
 			if(level != null){
 				level.Invoke();
 			}
 			started = true;
+		}else if(Transition.finished && !levelCardActivated && !LevelCard.finished){
+			LevelCard.FadeIn();
+			levelCardActivated = true;
 		}
 	}
 	
