@@ -13,7 +13,7 @@ public class HUDPreview : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(GameController.clusters.Count >= 4){
+		if(GameController.clusters != null && GameController.clusters.Count >= 4){
 			GameObject nextCluster = GameController.clusters[clusterIndex] as GameObject;
 			if(nextCluster != null && index < nextCluster.GetComponent<Cluster>().tiles.Count){
 				ArrayList tiles = nextCluster.GetComponent<Cluster>().tiles;

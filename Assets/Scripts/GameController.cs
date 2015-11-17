@@ -5,6 +5,7 @@ public class GameController : MonoBehaviour {
 
 	Matrix matrix;
 	private GFGrid grid;
+	private bool started;
 	
 	public static bool frozen = true;
 	public static bool finished = false;
@@ -27,6 +28,11 @@ public class GameController : MonoBehaviour {
 	private float maxY;
 	
 	public void ReplayLevel(){
+		Transition.FadeOut ();
+		Invoke ("PlaySameLevel", 3);
+	}
+	
+	private void PlaySameLevel(){
 		Application.LoadLevel ("Game");
 	}
 	
@@ -76,23 +82,26 @@ public class GameController : MonoBehaviour {
 		clusters.Add (GenerateNextCluster());
 		clusters.Add (GenerateNextCluster());
 		clusters.Add (GenerateNextCluster());
-		
-		ILevel level = GameObject.Find ("LevelController").GetComponentInChildren(typeof(ILevel)) as ILevel;
-		if(level != null){
-			level.Invoke();
-		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		timeSinceLastEvent += Time.deltaTime;
-	
-		if(timeSinceLastEvent > 1){
-			if(remainingTargetCount > 0){
-				frozen = false;
-			}else{
-				LoadWinScreen();
+		if(started){
+			timeSinceLastEvent += Time.deltaTime;
+		
+			if(timeSinceLastEvent > 1){
+				if(remainingTargetCount > 0){
+					frozen = false;
+				}else{
+					LoadWinScreen();
+				}
 			}
+		}else if(Transition.finished){
+			ILevel level = GameObject.Find ("LevelController").GetComponentInChildren(typeof(ILevel)) as ILevel;
+			if(level != null){
+				level.Invoke();
+			}
+			started = true;
 		}
 	}
 	
