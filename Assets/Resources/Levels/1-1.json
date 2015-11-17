@@ -54,7 +54,7 @@
     	},
     	{
     		"x": 7,
-    		"y": 18,
+    		"y": 15,
     		"prefabName": "Bomb",
     		"colorIndex": 0,
     		"white": true,

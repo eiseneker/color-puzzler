@@ -63,6 +63,8 @@ public class LevelLoader : MonoBehaviour {
 				Vector3 newPosition = matrix.PositionToCoordinate(x, y);
 				GameObject newObject = Instantiate (Resources.Load (element["prefabName"]), newPosition, Quaternion.identity) as GameObject;
 				if(element["colorIndex"] != null){
+					print (element["prefabName"] + "... " + newObject);
+					print (newObject.GetComponent<GridElement>());
 					newObject.GetComponent<GridElement>().colorIndex = element["colorIndex"].AsInt;
 					newObject.GetComponent<GridElement>().colorSet = true;
 				}
