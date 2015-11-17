@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Level11Controller : MonoBehaviour, ILevel {
-	public void Invoke(){
+public class Level11Controller : LevelController {
+	public override void Invoke(){
 		string[][] cursorInstructions = new string[6][];
 		
 		cursorInstructions[1] = new string[] { "MrTarget" };
@@ -13,8 +13,8 @@ public class Level11Controller : MonoBehaviour, ILevel {
 	
 		GameObject bubbleObject = Instantiate (Resources.Load ("SpeechBubble"), Vector3.zero, Quaternion.identity) as GameObject;
 		SpeechBubble speechBubble = bubbleObject.GetComponent<SpeechBubble>();
-		speechBubble.setWidth = 540;
-		speechBubble.setHeight = 90;
+		speechBubble.setWidth = HUDHelpers.speechWidth;
+		speechBubble.setHeight = HUDHelpers.speechHeight;
 		speechBubble.textToDisplay = new string[6];
 		speechBubble.textToDisplay[0] = "hello world! have you come to help us?";
 		speechBubble.textToDisplay[1] = "our mission is to rescue my imprisoned comrades.";
@@ -24,7 +24,7 @@ public class Level11Controller : MonoBehaviour, ILevel {
 		speechBubble.textToDisplay[5] = "go ahead and try creating a road of tiles between the target and the bomb.";
 		speechBubble.dismissable = true;
 		speechBubble.freezesGameOnDisplay = true;
-		speechBubble.transform.position = Camera.main.WorldToScreenPoint(new Vector3(-2.8f, -3.75f, 0));
+		speechBubble.transform.position = Camera.main.WorldToScreenPoint(HUDHelpers.speechPosition);
 		speechBubble.cursorInstructions = cursorInstructions;
 	}
 }
