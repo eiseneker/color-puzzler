@@ -330,6 +330,8 @@ public class GridElement : MonoBehaviour {
 			GameObject bonus = Instantiate (Resources.Load ("Bonus"), Camera.main.WorldToScreenPoint(transform.position), Quaternion.identity) as GameObject;
 			bonus.GetComponent<Bonus>().SetValue(10);
 		}
+		GameObject explosion = Instantiate (Resources.Load ("Explosion"), transform.position, Quaternion.identity) as GameObject;
+		explosion.transform.Find ("Body").GetComponent<SpriteRenderer>().color = color;
 		Destroy (gameObject);
 	}
 	

@@ -62,6 +62,8 @@ public class SpeechBubble : MonoBehaviour {
 				foreach(string friendlyName in cursorInstructions[textBubbleIndex]){
 					GameObject cursorObject = Instantiate (Resources.Load ("Cursor"), Vector3.zero, Quaternion.identity) as GameObject;
 					Cursor cursor = cursorObject.GetComponent<Cursor>();
+					GridElement foundElement = GameController.GetElementByName(friendlyName);
+					if(foundElement == null) throw new UnassignedReferenceException("no friendly object found for " + friendlyName);
 					cursor.transform.position = Camera.main.WorldToScreenPoint(GameController.GetElementByName(friendlyName).transform.position);
 					cursors.Add (cursor.gameObject);
 				}

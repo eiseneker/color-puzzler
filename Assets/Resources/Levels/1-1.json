@@ -4,16 +4,6 @@
     "randomizedTargetCount": 0,
     "remainingEnergy": 1000,
     "energyRequirementFactor": 1,
-    "tileColorFrequency": [
-    	"0.16",
-    	"0.16",
-    	"0.16",
-    	"0.16",
-    	"0.16",
-    	"0.16"
-    ],
-    "tileWhiteFrequency": "0",
-    "tileBlackFrequency": "0",
     "clusterColorFrequency": [
     	"1",
     	"0.0",
@@ -22,45 +12,82 @@
     	"0.0",
     	"0.0",
     ],
-    "targetColorFrequency": [
-        "0.16",
-        "0.16",
-        "0.16",
-        "0.16",
-        "0.16",
-        "0.16",
-    ],
-    "clusterWhiteFrequency": "0.0",
-    "clusterBlackFrequency": "0.0",
-    "clusterColorVariance": "0",
     "grid": [
     	{
-    		"x": 6,
-    		"y": 14,
-    		"prefabName": "Tile",
-    		"colorIndex": 0,
-    		"white": false,
-            "black": false,
-            "friendlyName": "MrTile"
-    	},
-    	{
-    		"x": 7,
-    		"y": 7,
+    		"x": 4,
+    		"y": 2,
     		"prefabName": "Target",
     		"colorIndex": 0,
-    		"white": false,
-            "black": false,
             "friendlyName": "MrTarget"
     	},
     	{
-    		"x": 7,
-    		"y": 15,
-    		"prefabName": "Bomb",
-    		"colorIndex": 0,
-    		"white": true,
-            "black": false,
-            "survivesExplosion": true,
+    		"x": 4,
+    		"y": 3,
+    		"prefabName": "Tile",
+    		"colorIndex": 0
+    	},
+        {
+            "x": 5,
+            "y": 3,
+            "prefabName": "Tile",
+            "colorIndex": 0
+        },
+        {
+            "x": 4,
+            "y": 4,
+            "prefabName": "Tile",
+            "colorIndex": 0
+        },
+        {
+            "x": 5,
+            "y": 4,
+            "prefabName": "Tile",
+            "colorIndex": 0
+        },
+        {
+            "x": 4,
+            "y": 5,
+            "prefabName": "Tile",
+            "colorIndex": 0
+        },
+        {
+            "x": 5,
+            "y": 5,
+            "prefabName": "Tile",
+            "colorIndex": 0
+        },
+        {
+            "x": 4,
+            "y": 8,
+            "prefabName": "Tile",
+            "colorIndex": 0
+        },
+        {
+            "x": 5,
+            "y": 8,
+            "prefabName": "Tile",
+            "colorIndex": 0
+        },
+        {
+            "x": 4,
+            "y": 9,
+            "prefabName": "Tile",
+            "colorIndex": 0,
+            "friendlyName": "MrTile"
+        },
+        {
+            "x": 5,
+            "y": 9,
+            "prefabName": "Tile",
+            "colorIndex": 0
+        },
+        {
+            "x": 4,
+            "y": 12,
+            "prefabName": "Bomb",
+            "colorIndex": 0,
+            "white": "true",
             "friendlyName": "MrBomb"
-    	}
+        }
     ]
 }
