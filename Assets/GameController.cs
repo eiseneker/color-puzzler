@@ -21,10 +21,10 @@ public class GameController : MonoBehaviour {
 	public static ArrayList clusters;
 	public static ArrayList namedElements;
 	
-	private float minX = -2.8f;
-	private float maxX = 2.8f;
-	private float minY = -3f;
-	private float maxY = 4.3f;
+	private float minX;
+	private float maxX;
+	private float minY;
+	private float maxY;
 	
 	public void ReplayLevel(){
 		Application.LoadLevel ("Game");
@@ -52,6 +52,11 @@ public class GameController : MonoBehaviour {
 		instance = this;
 		matrix = GameObject.Find ("Grid").GetComponent<Matrix>();
 		grid = GameObject.Find ("Grid").GetComponent<GFGrid>();
+		
+		minX = grid.renderFrom.x/grid.GetComponent<GFRectGrid>().spacing.x;
+		minY = grid.renderFrom.y/grid.GetComponent<GFRectGrid>().spacing.y;
+		maxX = grid.renderTo.x/grid.GetComponent<GFRectGrid>().spacing.x;
+		maxY = grid.renderTo.y/grid.GetComponent<GFRectGrid>().spacing.y;
 		
 		LevelLoader.matrix = matrix;
 		print ("load level params");

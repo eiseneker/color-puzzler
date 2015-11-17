@@ -10,8 +10,8 @@ public class Matrix : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		grid = GetComponent<GFRectGrid>();
-		xMax = Mathf.CeilToInt((grid.renderTo.x * 2));
-		yMax = Mathf.CeilToInt ((grid.renderTo.y * 2));
+		xMax = Mathf.CeilToInt(Mathf.Abs (grid.renderTo.x) + Mathf.Abs (grid.renderFrom.x));
+        yMax = Mathf.CeilToInt(Mathf.Abs (grid.renderTo.y) + Mathf.Abs (grid.renderFrom.y));
 		matrix = new GameObject[xMax, yMax];
 	}
 	
