@@ -17,6 +17,11 @@ public class ApplicationController : MonoBehaviour {
 	}
 	
 	public void GoToLevelSelect(){
+		Transition.FadeOut ();
+		Invoke ("LoadLevelSelect", 3);
+	}
+	
+	private void LoadLevelSelect(){
 		Application.LoadLevel("LevelSelect");
 	}
 	

@@ -2,7 +2,7 @@
     "name": "Hello World!",
     "randomizedTileCount": 0,
     "randomizedTargetCount": 0,
-    "remainingEnergy": 1000,
+    "remainingEnergy": 1,
     "energyRequirementFactor": 1,
     "clusterColorFrequency": [
     	"1",
