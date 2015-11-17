@@ -64,33 +64,35 @@ public class GridElement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(!permanentColorSet) {
-			permanentColorIndex = colorIndex;
-			permanentColorSet = true;
-			permanentWhite = white; 
-			permanentBlack = black;
-		}
-		
-		if(insertedIntoMatrix){
-			if(permanentColorSet) {
+		if(!GameController.finished){
+			if(!permanentColorSet) {
 				permanentColorIndex = colorIndex;
-				permanentWhite = white;
+				permanentColorSet = true;
+				permanentWhite = white; 
 				permanentBlack = black;
 			}
-			if(canBeReplaced) canBeReplaced = !disabled;
-		}else{
-			ManageHoverState ();
-		}
-		
-		if(!delayedColorSet){
-			if(colorDelay > 0){
-				colorDelay -= Time.deltaTime;
+			
+			if(insertedIntoMatrix){
+				if(permanentColorSet) {
+					permanentColorIndex = colorIndex;
+					permanentWhite = white;
+					permanentBlack = black;
+				}
+				if(canBeReplaced) canBeReplaced = !disabled;
 			}else{
-				SetColor ();
+				ManageHoverState ();
 			}
+			
+			if(!delayedColorSet){
+				if(colorDelay > 0){
+					colorDelay -= Time.deltaTime;
+				}else{
+					SetColor ();
+				}
+			}
+			
+			HandleExplosion ();
 		}
-		
-		HandleExplosion ();
 	}
 	
 	public void SetExplode(Direction direction, int newRefundValue){
