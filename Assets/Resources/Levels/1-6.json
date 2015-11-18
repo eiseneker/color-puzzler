@@ -1,0 +1,166 @@
+{
+    "name": "Stripe Fruit",
+    "randomizedTileCount": 0,
+    "randomizedTargetCount": 0,
+    "remainingEnergy": 100,
+    "energyRequirementFactor": 4,
+    "clusterColorFrequency": [
+        "0.25",
+        "0.25",
+        "0.25",
+        "0.25"
+    ],
+    "clusterColorVariance": ".1f",
+    "grid": [
+        {
+            "x": 3,
+            "y": 2,
+            "prefabName": "Target",
+            "colorIndex": 0
+        },
+        {
+            "x": 5,
+            "y": 2,
+            "prefabName": "Target",
+            "colorIndex": 2
+        },
+        {
+            "x": 3,
+            "y": 3,
+            "prefabName": "Tile",
+            "colorIndex": 0
+        },
+        {
+            "x": 5,
+            "y": 3,
+            "prefabName": "Tile",
+            "colorIndex": 1
+        },
+        {
+            "x": 3,
+            "y": 4,
+            "prefabName": "Tile",
+            "colorIndex": 0
+        },
+        {
+            "x": 4,
+            "y": 4,
+            "prefabName": "Tile",
+            "colorIndex": 2
+        },
+        {
+            "x": 5,
+            "y": 4,
+            "prefabName": "Tile",
+            "colorIndex": 1
+        },
+        {
+            "x": 6,
+            "y": 4,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 2,
+            "y": 5,
+            "prefabName": "Target",
+            "colorIndex": 2
+        },
+        {
+            "x": 3,
+            "y": 5,
+            "prefabName": "Tile",
+            "colorIndex": 0
+        },
+        {
+            "x": 4,
+            "y": 5,
+            "prefabName": "Tile",
+            "colorIndex": 2
+        },
+        {
+            "x": 5,
+            "y": 5,
+            "prefabName": "Tile",
+            "colorIndex": 1
+        },
+        {
+            "x": 6,
+            "y": 5,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 3,
+            "y": 6,
+            "prefabName": "Tile",
+            "colorIndex": 0
+        },
+        {
+            "x": 4,
+            "y": 6,
+            "prefabName": "Tile",
+            "colorIndex": 2
+        },
+        {
+            "x": 5,
+            "y": 6,
+            "prefabName": "Tile",
+            "colorIndex": 1
+        },
+        {
+            "x": 6,
+            "y": 6,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 3,
+            "y": 7,
+            "prefabName": "Tile",
+            "colorIndex": 0
+        },
+        {
+            "x": 4,
+            "y": 7,
+            "prefabName": "Tile",
+            "colorIndex": 2
+        },
+        {
+            "x": 5,
+            "y": 7,
+            "prefabName": "Tile",
+            "colorIndex": 1
+        },
+        {
+            "x": 6,
+            "y": 7,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 4,
+            "y": 8,
+            "prefabName": "Tile",
+            "colorIndex": 2
+        },
+        {
+            "x": 6,
+            "y": 8,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 9,
+            "y": 8,
+            "prefabName": "Bomb",
+            "colorIndex": 3
+        },
+        {
+            "x": 4,
+            "y": 9,
+            "prefabName": "Target",
+            "colorIndex": 1
+        }
+    ]
+}
