@@ -16,18 +16,26 @@ public class LevelLoader : MonoBehaviour {
 		
 		if(json["tileColorFrequency"] != null){
 			Tile.colorProbability = GetProbabilityArray(json["tileColorFrequency"].AsArray);
+		}else{
+			Tile.colorProbability = null;
 		}
 		
 		if(json["targetColorFrequency"] != null){
 			Target.colorProbability = GetProbabilityArray(json["targetColorFrequency"].AsArray);
+		}else{
+			Target.colorProbability = null;
 		}
 		
 		if(json["bombColorFrequency"] != null){
 			Bomb.colorProbability = GetProbabilityArray(json["bombColorFrequency"].AsArray);
+		}else{
+			Bomb.colorProbability = null;
 		}
 		
 		if(json["clusterColorFrequency"] != null){
 			Cluster.colorProbability = GetProbabilityArray(json["clusterColorFrequency"].AsArray);
+		}else{
+			throw new UnityException("No manifest entry for clusterColorFrequency found");
 		}
 		
 		if(json["clusterForcedPattern"] != null){
@@ -46,22 +54,32 @@ public class LevelLoader : MonoBehaviour {
 		
 		if(json["tileWhiteFrequency"] != null){
 			Tile.whiteProbability = json["tileWhiteFrequency"].AsFloat;
+		}else{
+			Tile.whiteProbability = 0;
 		}
 		
 		if(json["clusterWhiteFrequency"] != null){
 			Cluster.whiteProbability = json["clusterWhiteFrequency"].AsFloat;
+		}else{
+			Cluster.whiteProbability = 0;
 		}
 		
 		if(json["tileBlackFrequency"] != null){
 			Tile.blackProbability = json["tileBlackFrequency"].AsFloat;
+		}else{
+			Tile.blackProbability = 0;
 		}
 		
 		if(json["clusterBlackFrequency"] != null){
 			Cluster.blackProbability = json["clusterBlackFrequency"].AsFloat;
+		}else{
+			Cluster.blackProbability = 0;
 		}
 		
 		if(json["energyRequirementFactor"] != null){
 			GameController.energyRequirementFactor = json["energyRequirementFactor"].AsFloat;
+		}else{
+			GameController.energyRequirementFactor = 1;
 		}
 		
 		if(json["grid"] != null){
