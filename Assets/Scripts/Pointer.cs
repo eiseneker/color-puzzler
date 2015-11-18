@@ -30,7 +30,7 @@ public class Pointer : MonoBehaviour {
 					if(nextCluster){
 						Cluster returnedCluster = nextCluster.GetComponent<Cluster>();
 						returnedCluster.transform.position = transform.position;
-						if(GameController.remainingEnergy >= GameController.EnergyRequirement()){
+						if(GameController.remainingEnergy >= 1){
 							Vector3 newPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 							newPosition.z = 1;
 							cluster = returnedCluster;
