@@ -14,12 +14,11 @@ public class Transition : MonoBehaviour {
 	
 	public void MarkFinished(){
 		finished = true;
-		GetComponent<Canvas>().sortingOrder = -1;
-		
+		GetComponent<Canvas>().enabled = false;
 	}
 	
 	public static void FadeOut(){
-		instance.GetComponent<Canvas>().sortingOrder = 2;
+		instance.GetComponent<Canvas>().enabled = true;
 		instance.GetComponent<Animator>().Play("TransitionFadeOut");
 	}
 }
