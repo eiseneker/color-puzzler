@@ -10,7 +10,7 @@
         "0.25",
         "0.25"
     ],
-    "clusterColorVariance": ".1f",
+    "clusterColorVariance": ".1",
     "grid": [
         {
             "x": 3,

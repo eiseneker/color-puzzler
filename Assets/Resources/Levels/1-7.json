@@ -1,0 +1,123 @@
+{
+    "name": "Red vs. Green",
+    "randomizedTileCount": 0,
+    "randomizedTargetCount": 0,
+    "remainingEnergy": 100,
+    "energyRequirementFactor": 4,
+    "clusterColorFrequency": [
+        "0.5",
+        "0.00",
+        "0.00",
+        "0.5"
+    ],
+    "grid": [
+        {
+            "x": 3,
+            "y": 1,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 8,
+            "y": 1,
+            "prefabName": "Tile",
+            "colorIndex": 0
+        },
+        {
+            "x": 2,
+            "y": 2,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 3,
+            "y": 2,
+            "prefabName": "Target",
+            "colorIndex": 0
+        },
+        {
+            "x": 4,
+            "y": 2,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 7,
+            "y": 2,
+            "prefabName": "Tile",
+            "colorIndex": 0
+        },
+        {
+            "x": 8,
+            "y": 2,
+            "prefabName": "Target",
+            "colorIndex": 3
+        },
+        {
+            "x": 9,
+            "y": 2,
+            "prefabName": "Tile",
+            "colorIndex": 0
+        },
+        {
+            "x": 3,
+            "y": 3,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 8,
+            "y": 3,
+            "prefabName": "Tile",
+            "colorIndex": 0
+        },
+        {
+            "x": 3,
+            "y": 4,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 8,
+            "y": 4,
+            "prefabName": "Tile",
+            "colorIndex": 0
+        },
+        {
+            "x": 3,
+            "y": 5,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 8,
+            "y": 5,
+            "prefabName": "Tile",
+            "colorIndex": 0
+        },
+        {
+            "x": 3,
+            "y": 6,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 8,
+            "y": 6,
+            "prefabName": "Tile",
+            "colorIndex": 0
+        },
+        {
+            "x": 3,
+            "y": 7,
+            "prefabName": "Bomb",
+            "colorIndex": 0
+        },
+        {
+            "x": 8,
+            "y": 7,
+            "prefabName": "Bomb",
+            "colorIndex": 3
+        }
+    ]
+}
