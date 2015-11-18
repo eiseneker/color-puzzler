@@ -30,10 +30,10 @@ public class LevelLoader : MonoBehaviour {
 			Cluster.colorProbability = GetProbabilityArray(json["clusterColorFrequency"].AsArray);
 		}
 		
-		if(json["clusterColorVariance"] != null){
-			Cluster.colorVariance = json["clusterColorVariance"].AsFloat;
+		if(json["clusterColorStability"] != null){
+			Cluster.colorStability = json["clusterColorVariance"].AsFloat;
 		}else{
-			Cluster.colorVariance = 0;
+			Cluster.colorStability = 1;
 		}
 		
 		if(json["tileWhiteFrequency"] != null){

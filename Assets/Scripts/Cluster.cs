@@ -10,7 +10,7 @@ public class Cluster : MonoBehaviour {
 	public static float whiteProbability = 0;
 	public static float blackProbability = 0;
 	
-	public static float colorVariance;
+	public static float colorStability;
 	private int replaceIndex;
 
 	// Use this for initialization
@@ -35,7 +35,7 @@ public class Cluster : MonoBehaviour {
 		RandomizeTiles();
 		
 		foreach(Transform tile in tilesToRandomize){
-			if(lastColorIndex != -1 && Random.value > colorVariance){
+			if(lastColorIndex != -1 && Random.value <= colorStability){
 				tile.GetComponent<GridElement>().colorIndex = lastColorIndex;
 				tile.GetComponent<GridElement>().colorSet = true;
 			}else{
