@@ -11,7 +11,8 @@
         "0.0",
         "0.5"
     ],
-    "clusterColorStability": "0",
+    "clusterColorStability": ".9",
+    "clusterForcedPattern": [4, 1, 1, 1],
     "grid": [
         {
             "x": 2,

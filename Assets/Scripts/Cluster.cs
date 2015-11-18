@@ -9,6 +9,7 @@ public class Cluster : MonoBehaviour {
 	public static float[] colorProbability = new float[] { 1.666f, 1.666f, 1.666f, 1.666f, 1.666f, 1.666f };
 	public static float whiteProbability = 0;
 	public static float blackProbability = 0;
+	public static int[] forcedPattern;
 	
 	public static float colorStability;
 	private int replaceIndex;
@@ -31,25 +32,37 @@ public class Cluster : MonoBehaviour {
 		foreach(Transform tile in tiles){
 			tile.parent = transform.Find ("Tiles");
 		}
-		
-		RandomizeTiles();
-		
-		foreach(Transform tile in tilesToRandomize){
-			if(lastColorIndex != -1 && Random.value <= colorStability){
-				tile.GetComponent<GridElement>().colorIndex = lastColorIndex;
-				tile.GetComponent<GridElement>().colorSet = true;
-			}else{
-				float random = Random.value;
-				if(random < whiteProbability){
-					tile.GetComponent<GridElement>().white = true;
+	
+		if(forcedPattern == null){	
+			RandomizeTiles();
+			
+			foreach(Transform tile in tilesToRandomize){
+				if(lastColorIndex != -1 && Random.value <= colorStability){
+					tile.GetComponent<GridElement>().colorIndex = lastColorIndex;
+					tile.GetComponent<GridElement>().colorSet = true;
+				}else{
+					float random = Random.value;
+					if(random < whiteProbability){
+						tile.GetComponent<GridElement>().white = true;
+					}
+					if(random >= whiteProbability && random < (whiteProbability + blackProbability)){
+						tile.GetComponent<GridElement>().black = true;
+					}
+					tile.GetComponent<GridElement>().colorIndex = GridElement.RandomizedColorIndex(colorProbability);
+					tile.GetComponent<GridElement>().colorSet = true;
 				}
-				if(random >= whiteProbability && random < (whiteProbability + blackProbability)){
-					tile.GetComponent<GridElement>().black = true;
-				}
-				tile.GetComponent<GridElement>().colorIndex = GridElement.RandomizedColorIndex(colorProbability);
-				tile.GetComponent<GridElement>().colorSet = true;
+				lastColorIndex = tile.GetComponent<GridElement>().colorIndex;
 			}
-			lastColorIndex = tile.GetComponent<GridElement>().colorIndex;
+		}else{
+			int i = 0;
+			print ("cluster generation");
+			print ("length: " + forcedPattern.Length);
+			foreach(Transform tile in tiles){
+				print ("going for " + i);
+				tile.GetComponent<GridElement>().colorIndex = forcedPattern[i];
+				tile.GetComponent<GridElement>().colorSet = true;
+				i++;
+			}
 		}
 	}
 	

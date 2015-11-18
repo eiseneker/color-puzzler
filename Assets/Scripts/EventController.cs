@@ -195,6 +195,7 @@ public class EventController : MonoBehaviour {
 		Destroy(tile.gameObject);
 		GameObject bomb = Instantiate (Resources.Load ("Bomb"), tile.transform.position, Quaternion.identity) as GameObject;
 		bomb.GetComponent<GridElement>().colorSet = true;
+		bomb.GetComponent<GridElement>().survivesExplosion = false;
 		int factor = 1;
 		if(originalColorIndex >= 3){
 			factor *= -1;

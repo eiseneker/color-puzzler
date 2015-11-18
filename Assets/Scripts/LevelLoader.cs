@@ -30,6 +30,14 @@ public class LevelLoader : MonoBehaviour {
 			Cluster.colorProbability = GetProbabilityArray(json["clusterColorFrequency"].AsArray);
 		}
 		
+		if(json["clusterForcedPattern"] != null){
+			JSONArray pattern = json["clusterForcedPattern"].AsArray;
+			Cluster.forcedPattern = new int[] { pattern[0].AsInt, pattern[1].AsInt, pattern[2].AsInt, pattern[3].AsInt };
+			print ("forced pattern assigned");
+		}else{
+			Cluster.forcedPattern = null;
+		}
+		
 		if(json["clusterColorStability"] != null){
 			Cluster.colorStability = json["clusterColorVariance"].AsFloat;
 		}else{
