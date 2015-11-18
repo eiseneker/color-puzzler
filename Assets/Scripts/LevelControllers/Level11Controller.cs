@@ -11,10 +11,8 @@ public class Level11Controller : LevelController {
 		cursorInstructions[4] = new string[] { "MrTile" };
 		cursorInstructions[5] = new string[] { "MrBomb", "MrTarget" };
 	
-		GameObject bubbleObject = Instantiate (Resources.Load ("SpeechBubble"), Vector3.zero, Quaternion.identity) as GameObject;
-		SpeechBubble speechBubble = bubbleObject.GetComponent<SpeechBubble>();
-		speechBubble.setWidth = HUDHelpers.speechWidth;
-		speechBubble.setHeight = HUDHelpers.speechHeight;
+		SpeechBubble speechBubble = SpeechBubble.mainBubble;
+		
 		speechBubble.textToDisplay = new string[6];
 		speechBubble.textToDisplay[0] = "hello world! have you come to help us?";
 		speechBubble.textToDisplay[1] = "our mission is to rescue my imprisoned comrades.";
@@ -23,9 +21,8 @@ public class Level11Controller : LevelController {
 		speechBubble.textToDisplay[4] = "each turn, you get a new set of tiles to place on the board.";
 		speechBubble.textToDisplay[5] = "go ahead and try creating a road of tiles between the target and the bomb.";
 		speechBubble.dismissable = true;
-		speechBubble.freezesGameOnDisplay = true;
-		speechBubble.transform.position = Camera.main.WorldToScreenPoint(HUDHelpers.speechPosition);
 		speechBubble.cursorInstructions = cursorInstructions;
+		speechBubble.Activate();
 	}
 }
 

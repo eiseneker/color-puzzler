@@ -2,8 +2,8 @@
     "name": "Just The Two of Us",
     "randomizedTileCount": 0,
     "randomizedTargetCount": 0,
-    "remainingEnergy": 1000,
-    "energyRequirementFactor": 1,
+    "remainingEnergy": 100,
+    "energyRequirementFactor": 10,
     "clusterColorFrequency": [
         "0.33",
         "0.33",

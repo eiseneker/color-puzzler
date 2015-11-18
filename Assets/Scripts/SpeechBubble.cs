@@ -13,6 +13,7 @@ public class SpeechBubble : MonoBehaviour {
 	public float setHeight;
 	public bool freezesGameOnDisplay;
 	public string[][] cursorInstructions;
+	public bool isMainBubble;
 	
 	private int textBubbleIndex;
 	private float currentTimeBetweenCharacters;
@@ -27,10 +28,15 @@ public class SpeechBubble : MonoBehaviour {
 	private bool cursorStale;
 	private ArrayList cursors;
 	
+	public static SpeechBubble mainBubble;
+	
 	public static bool inFreezeState;
 
 	// Use this for initialization
 	void Start () {
+		if(isMainBubble) {
+			mainBubble = this;
+		}
 		text = transform.Find ("Text").GetComponent<Text>();
 		text.text = "";
 		bubble = GetComponent<RectTransform>();
@@ -39,6 +45,12 @@ public class SpeechBubble : MonoBehaviour {
 		arrow = transform.Find ("Arrow").gameObject;
 		inFreezeState = freezesGameOnDisplay;
 		cursors = new ArrayList();
+		if(isMainBubble) gameObject.SetActive (false);
+	}
+	
+	public void Activate(){
+		inFreezeState = freezesGameOnDisplay;
+		gameObject.SetActive (true);
 	}
 	
 	// Update is called once per frame
@@ -48,14 +60,16 @@ public class SpeechBubble : MonoBehaviour {
 			text.text += textToDisplay[textBubbleIndex][textIndex];
 			textIndex++;
 			currentTimeBetweenCharacters = 0;
-			if(setWidth == 0 || setHeight == 0){
-				if(maxWidth < text.preferredWidth + 40) maxWidth = text.preferredWidth + 40;
-				if(maxHeight < text.preferredHeight + 30) maxHeight = text.preferredHeight + 30;
-			}else{
-				maxWidth = setWidth;
-				maxHeight = setHeight;
+			if(!mainBubble){
+				if(setWidth == 0 || setHeight == 0){
+					if(maxWidth < text.preferredWidth + 40) maxWidth = text.preferredWidth + 40;
+					if(maxHeight < text.preferredHeight + 30) maxHeight = text.preferredHeight + 30;
+				}else{
+					maxWidth = setWidth;
+					maxHeight = setHeight;
+				}
+				bubble.sizeDelta = new Vector2(maxWidth, maxHeight);
 			}
-			bubble.sizeDelta = new Vector2(maxWidth, maxHeight);
 		}
 		if(!cursorStale && cursorInstructions != null && cursorInstructions.Length > textBubbleIndex){
 			if(cursorInstructions[textBubbleIndex] != null){
@@ -86,11 +100,18 @@ public class SpeechBubble : MonoBehaviour {
 	
 	public void DismissMe(){
 		if(dismissable && Finished()){
+			textIndex = 0;
+			textBubbleIndex = 0;
+			text.text = "";
 			foreach(GameObject cursor in cursors){
 				Destroy (cursor);
 			}
 			if(freezesGameOnDisplay) inFreezeState = false;
-			Destroy (gameObject);
+			if(isMainBubble){
+				gameObject.SetActive(false);
+			}else{
+				Destroy (gameObject);
+			}
 		}
 	}
 	

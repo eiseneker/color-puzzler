@@ -4,6 +4,6 @@ using System.Collections;
 public class HUDHelpers : MonoBehaviour {
 
 	public static Vector3 speechPosition = new Vector3(-2.8f, -3.75f, 0);
-	public static float speechWidth = 460;
-	public static float speechHeight = 70;
+	public static float speechWidth = 550;
+	public static float speechHeight = 90;
 }
