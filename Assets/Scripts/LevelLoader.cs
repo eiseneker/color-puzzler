@@ -32,6 +32,8 @@ public class LevelLoader : MonoBehaviour {
 		
 		if(json["clusterColorVariance"] != null){
 			Cluster.colorVariance = json["clusterColorVariance"].AsFloat;
+		}else{
+			Cluster.colorVariance = 0;
 		}
 		
 		if(json["tileWhiteFrequency"] != null){

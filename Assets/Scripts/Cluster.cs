@@ -10,7 +10,7 @@ public class Cluster : MonoBehaviour {
 	public static float whiteProbability = 0;
 	public static float blackProbability = 0;
 	
-	public static float colorVariance = .25f;
+	public static float colorVariance;
 	private int replaceIndex;
 
 	// Use this for initialization

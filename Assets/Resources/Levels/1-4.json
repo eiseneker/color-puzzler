@@ -1,0 +1,75 @@
+{
+    "name": "Lemon-Lime Lesson",
+    "randomizedTileCount": 0,
+    "randomizedTargetCount": 0,
+    "remainingEnergy": 1000,
+    "energyRequirementFactor": 1,
+    "clusterColorFrequency": [
+        "0.33",
+        "0.33",
+        "0.34"
+    ],
+    "grid": [
+        {
+            "x": 3,
+            "y": 2,
+            "prefabName": "Tile",
+            "colorIndex": 2
+        },
+        {
+            "x": 4,
+            "y": 2,
+            "prefabName": "Tile",
+            "colorIndex": 2
+        },
+        {
+            "x": 5,
+            "y": 2,
+            "prefabName": "Tile",
+            "colorIndex": 2
+        },
+        {
+            "x": 3,
+            "y": 3,
+            "prefabName": "Tile",
+            "colorIndex": 2
+        },
+        {
+            "x": 4,
+            "y": 3,
+            "prefabName": "Target",
+            "colorIndex": 3
+        },
+        {
+            "x": 5,
+            "y": 3,
+            "prefabName": "Tile",
+            "colorIndex": 2
+        },
+        {
+            "x": 3,
+            "y": 4,
+            "prefabName": "Tile",
+            "colorIndex": 2
+        },
+        {
+            "x": 4,
+            "y": 4,
+            "prefabName": "Tile",
+            "colorIndex": 2
+        },
+        {
+            "x": 5,
+            "y": 4,
+            "prefabName": "Tile",
+            "colorIndex": 2
+        },
+        {
+            "x": 3,
+            "y": 10,
+            "prefabName": "Bomb",
+            "colorIndex": 0,
+            "white": true
+        }
+    ]
+}
