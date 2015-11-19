@@ -5,7 +5,7 @@ public class Cursor : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		GameObject playHud = GameObject.Find ("PlayHUD");
+		GameObject playHud = GameObject.Find ("CursorHUD");
 		transform.parent = playHud.transform;
 	}
 	
