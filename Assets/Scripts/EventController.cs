@@ -5,6 +5,7 @@ public class EventController : MonoBehaviour {
 
 	public static ArrayList tilesToReviewForLevel1 = new ArrayList();
 	public static ArrayList tilesToReviewForBombs = new ArrayList();
+	public static ArrayList tilesToIgnoreForLevel1 = new ArrayList();
 	
 	private float timeSinceLastEvaluation;
 	private bool evaluateBombs = false;
@@ -16,6 +17,10 @@ public class EventController : MonoBehaviour {
 	private float explosionDelay;
 	private bool readyToExplode;
 	private ArrayList fieldBombs = new ArrayList();
+	
+	public static void ResetTiles(){
+		tilesToIgnoreForLevel1.Clear ();
+	}
 	
 	void Start () {
 		grid = GameObject.Find ("Grid").GetComponent<GFGrid>();
@@ -47,7 +52,10 @@ public class EventController : MonoBehaviour {
 		ArrayList tilesToIgnore = new ArrayList();
 		ArrayList centerCandidates = GetTilesWithOppositeNeighbors(tilesToReviewForLevel1);
 		
+		print("round of evaluation");
+		
 		foreach(GameObject centerCandidate in centerCandidates){
+			print ("evaluating candidate " + centerCandidate.name);
 			bool[] matchMatrix = GenerateMatchMatrix(centerCandidate);
 			if(IsLevel3Pattern(matchMatrix)) tilesToIgnore.Add (centerCandidate.GetComponent<Tile>());
 			if(IsLevel2Pattern(matchMatrix) && !tilesToIgnore.Contains(centerCandidate.GetComponent<Tile>())) {
@@ -58,7 +66,9 @@ public class EventController : MonoBehaviour {
 				!tilesToIgnore.Contains (centerCandidate.GetComponent<Tile>());
 			
 			if(notAlreadyUsed){
-				if(IsLevel1Pattern(matchMatrix)) {
+				print ("A for " + centerCandidate.name);
+				if(!tilesToIgnoreForLevel1.Contains(centerCandidate.GetComponent<Tile>()) && IsLevel1Pattern(matchMatrix)) {
+					print ("B for " + centerCandidate.name);
 					tilesToFlip.Add(centerCandidate.GetComponent<Tile>());
 				}
 			}
@@ -135,14 +145,18 @@ public class EventController : MonoBehaviour {
 	
 	private void FlipTiles(){
 		foreach(Tile tile in tilesToFlip){
-			int factor = 1;
-			if(tile.GetComponent<GridElement>().colorIndex >= 3){
-				factor *= -1;
+			if(!tilesToIgnoreForLevel1.Contains(tile)){
+				int factor = 1;
+				if(tile.GetComponent<GridElement>().colorIndex >= 3){
+					factor *= -1;
+				}
+				int difference = Mathf.Abs (tile.GetComponent<GridElement>().colorIndex + (3 * factor));
+				print ("updating tile to " + difference);
+				tile.GetComponent<GridElement>().UpdateColorByIndex(difference, 1);
+				GameController.ResetEventTimer();
+				tile.EnterTransitionState();
+				tilesToIgnoreForLevel1.Add (tile);
 			}
-			int difference = Mathf.Abs (tile.GetComponent<GridElement>().colorIndex + (3 * factor));
-			tile.GetComponent<GridElement>().UpdateColorByIndex(difference, 1);
-			GameController.ResetEventTimer();
-			tile.EnterTransitionState();
 		}
 		tilesToFlip.Clear ();
 	}
@@ -212,7 +226,7 @@ public class EventController : MonoBehaviour {
 			GridElement gridElement = center.GetComponent<GridElement>();
 			GameObject neighbor = ((GameObject)gridElement.AllNeighbors()[i]);
 			if(neighbor != null){
-				matchMatrix[i] = (OppositeColors(gridElement, neighbor.GetComponent<GridElement>()) && neighbor.GetComponent<GridElement>().canBeReplaced && !neighbor.GetComponent<GridElement>().disabled);
+				matchMatrix[i] = (OppositeColors(gridElement, neighbor.GetComponent<GridElement>()) && !neighbor.GetComponent<GridElement>().disabled);
 			}
 		}
 		return(matchMatrix);

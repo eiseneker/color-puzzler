@@ -13,7 +13,6 @@ public class Pointer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		print ("get my pointer on!");
 		if(!HUDDrawer.drawerOut && !SpeechBubble.inFreezeState){
 			if(cluster){
 				Vector3 newPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -72,7 +71,7 @@ public class Pointer : MonoBehaviour {
 					tiles.Add (tile);
 				}
 			}
-			
+			EventController.ResetTiles();
 			EventController.tilesToReviewForLevel1 = tiles;
 			EventController.tilesToReviewForBombs = tiles;
 			GameController.remainingEnergy -= GameController.EnergyRequirement ();

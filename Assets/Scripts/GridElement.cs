@@ -45,6 +45,7 @@ public class GridElement : MonoBehaviour {
 	void Start () {
 		UpdateColorByIndex (colorIndex);
 		SetColor();
+		gameObject.name = Random.Range (0, 9999999).ToString ();
 	}
 	
 	private Matrix Matrix(){

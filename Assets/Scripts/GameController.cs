@@ -66,7 +66,6 @@ public class GameController : MonoBehaviour {
 		maxY = grid.renderTo.y/grid.GetComponent<GFRectGrid>().spacing.y;
 		
 		LevelLoader.matrix = matrix;
-		print ("load level params");
 		LevelLoader.LoadLevel (ApplicationController.levelToLoad);
 		
 		ArrayList tiles = CreateRandomizedObjects((GameObject)Resources.Load ("Tile"), randomizedTileCount);
