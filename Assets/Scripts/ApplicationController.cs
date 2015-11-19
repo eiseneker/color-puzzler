@@ -5,7 +5,7 @@ public class ApplicationController : MonoBehaviour {
 
 	public static string levelToLoad = "1-1";
 	
-	private ApplicationController instance;
+	public static ApplicationController instance;
 	
 	void Start(){
 		instance = this;

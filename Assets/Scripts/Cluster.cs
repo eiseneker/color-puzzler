@@ -55,10 +55,7 @@ public class Cluster : MonoBehaviour {
 			}
 		}else{
 			int i = 0;
-			print ("cluster generation");
-			print ("length: " + forcedPattern.Length);
 			foreach(Transform tile in tiles){
-				print ("going for " + i);
 				tile.GetComponent<GridElement>().colorIndex = forcedPattern[i];
 				tile.GetComponent<GridElement>().colorSet = true;
 				i++;

@@ -28,6 +28,15 @@ public class GameController : MonoBehaviour {
 	private float maxY;
 	private bool levelCardActivated;
 	
+	public void NextLevel(){
+		int index = LevelLoader.levels.BinarySearch(ApplicationController.levelToLoad);
+		if(index + 1 == LevelLoader.levels.Count){
+			ApplicationController.instance.GoToLevelSelect();
+		}else{
+			ApplicationController.instance.GoToLevel((string)LevelLoader.levels[index + 1]);
+		}
+	}
+	
 	public void ReplayLevel(){
 		Transition.FadeOut ();
 		Invoke ("PlaySameLevel", 3);
@@ -39,11 +48,8 @@ public class GameController : MonoBehaviour {
 	
 	public static GridElement GetElementByName(string friendlyName){
 		GridElement elementToReturn = null;
-		print ("list o friendlies:");
 		foreach(GridElement element in namedElements){
-			print (element);
 			if(element.friendlyName == friendlyName){
-				print("found one!");
 				elementToReturn = element;
 			}
 		}

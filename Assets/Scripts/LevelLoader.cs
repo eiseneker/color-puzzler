@@ -4,8 +4,23 @@ using SimpleJSON;
 
 public class LevelLoader : MonoBehaviour {
 
-	public static Matrix matrix;
+	public static ArrayList levels = new ArrayList();
 
+	public static Matrix matrix;
+	
+	void Start(){
+		if(levels.Count == 0){
+			levels.Add ("1-1");
+			levels.Add ("1-2");
+			levels.Add ("1-3");
+			levels.Add ("1-4");
+			levels.Add ("1-5");
+			levels.Add ("1-6");
+			levels.Add ("1-7");
+			levels.Add ("1-8");
+		}
+	}
+	
 	public static void LoadLevel(string levelNumber){
 		TextAsset levelText = Resources.Load ("Levels/" + levelNumber) as TextAsset;
 		JSONNode json = JSON.Parse (levelText.text);
@@ -41,7 +56,6 @@ public class LevelLoader : MonoBehaviour {
 		if(json["clusterForcedPattern"] != null){
 			JSONArray pattern = json["clusterForcedPattern"].AsArray;
 			Cluster.forcedPattern = new int[] { pattern[0].AsInt, pattern[1].AsInt, pattern[2].AsInt, pattern[3].AsInt };
-			print ("forced pattern assigned");
 		}else{
 			Cluster.forcedPattern = null;
 		}
