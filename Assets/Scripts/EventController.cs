@@ -168,7 +168,7 @@ public class EventController : MonoBehaviour {
 			foreach(GameObject neighborObject in neighbors){
 				if(neighborObject){
 					GridElement neighbor = neighborObject.GetComponent<GridElement>();
-					if(!neighbor.disabled && neighbor.canBeReplaced && OppositeColors(neighbor, tileElement)){
+					if(!neighbor.Disabled() && neighbor.canBeReplaced && OppositeColors(neighbor, tileElement)){
 						if(!listToReturn.Contains(neighbor.gameObject)) {
 							listToReturn.Add (neighbor.gameObject);
 						}
@@ -219,7 +219,7 @@ public class EventController : MonoBehaviour {
 			GridElement gridElement = center.GetComponent<GridElement>();
 			GameObject neighbor = ((GameObject)gridElement.AllNeighbors()[i]);
 			if(neighbor != null){
-				matchMatrix[i] = (OppositeColors(gridElement, neighbor.GetComponent<GridElement>()) && !neighbor.GetComponent<GridElement>().disabled);
+				matchMatrix[i] = (OppositeColors(gridElement, neighbor.GetComponent<GridElement>()) && !neighbor.GetComponent<GridElement>().Disabled());
 			}
 		}
 		return(matchMatrix);

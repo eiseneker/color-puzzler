@@ -44,7 +44,7 @@ public class Tile : MonoBehaviour {
 	public void UpdateSprite(){
 		GridElement gridElement = GetComponent<GridElement>();
 		if(SpriteOverlay () != null){
-			if(gridElement.disabled){
+			if(gridElement.Disabled ()){
 				SpriteOverlay().sprite = spriteDisabled;
 				SpriteOverlay ().color = Color.black;
 			}else if(gridElement.white){

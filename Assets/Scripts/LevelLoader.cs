@@ -31,20 +31,14 @@ public class LevelLoader : MonoBehaviour {
 		
 		if(json["tileColorFrequency"] != null){
 			Tile.colorProbability = GetProbabilityArray(json["tileColorFrequency"].AsArray);
-		}else{
-			Tile.colorProbability = null;
 		}
 		
 		if(json["targetColorFrequency"] != null){
 			Target.colorProbability = GetProbabilityArray(json["targetColorFrequency"].AsArray);
-		}else{
-			Target.colorProbability = null;
 		}
 		
 		if(json["bombColorFrequency"] != null){
 			Bomb.colorProbability = GetProbabilityArray(json["bombColorFrequency"].AsArray);
-		}else{
-			Bomb.colorProbability = null;
 		}
 		
 		if(json["clusterColorFrequency"] != null){
