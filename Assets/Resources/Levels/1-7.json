@@ -10,6 +10,7 @@
         "0.00",
         "0.5"
     ],
+    "clusterBlackFrequency": "1",
     "grid": [
         {
             "x": 3,

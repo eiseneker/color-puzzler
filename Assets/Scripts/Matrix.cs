@@ -44,7 +44,16 @@ public class Matrix : MonoBehaviour {
 			if(matrix[xArrayPosition, yArrayPosition] == null){
 				return(true);
 			}else{
-				return(matrix[xArrayPosition, yArrayPosition].GetComponent<GridElement>().canBeReplaced);
+				GridElement elementAtPosition = matrix[xArrayPosition, yArrayPosition].GetComponent<GridElement>();
+				bool canInsert = elementAtPosition.canBeReplaced;
+				if(elementAtPosition.Disabled() && objectToInsert.GetComponent<GridElement>().black){
+					canInsert = true;
+				}else if(elementAtPosition.Disabled()){
+					canInsert = false;
+				}else{
+					canInsert = true;
+				}
+				return(canInsert);
 			}
 		}else{
 			return(false);

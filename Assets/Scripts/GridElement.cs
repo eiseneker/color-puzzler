@@ -80,7 +80,6 @@ public class GridElement : MonoBehaviour {
 					permanentWhite = white;
 					permanentBlack = black;
 				}
-				if(canBeReplaced) canBeReplaced = !Disabled();
 			}else{
 				ManageHoverState ();
 			}
@@ -165,12 +164,11 @@ public class GridElement : MonoBehaviour {
 	public void UpdateColor(float delay){
 		colorDelay = delay;
 		delayedColorSet = false;
-		if(gray){
+		if(gray){	
 			color = Color.gray;
 		}else if(brown){
 			color = new Color(.55f, .25f, 0);
 		}else if(white){
-			print ("setting color to whiiiite");
 			color = Color.white;
 		}else if(black){
 			color = Color.black;
