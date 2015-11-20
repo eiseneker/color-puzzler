@@ -219,7 +219,7 @@ public class EventController : MonoBehaviour {
 			GridElement gridElement = center.GetComponent<GridElement>();
 			GameObject neighbor = ((GameObject)gridElement.AllNeighbors()[i]);
 			if(neighbor != null){
-				matchMatrix[i] = (OppositeColors(gridElement, neighbor.GetComponent<GridElement>()) && !neighbor.GetComponent<GridElement>().Disabled());
+				matchMatrix[i] = (OppositeColors(gridElement, neighbor.GetComponent<GridElement>()) && !neighbor.GetComponent<GridElement>().Disabled() && !neighbor.GetComponent<GridElement>().white && !neighbor.GetComponent<GridElement>().black);
 			}
 		}
 		return(matchMatrix);
