@@ -60,7 +60,7 @@ public class SpeechBubble : MonoBehaviour {
 			text.text += textToDisplay[textBubbleIndex][textIndex];
 			textIndex++;
 			currentTimeBetweenCharacters = 0;
-			if(!mainBubble){
+			if(!isMainBubble){
 				if(setWidth == 0 || setHeight == 0){
 					if(maxWidth < text.preferredWidth + 40) maxWidth = text.preferredWidth + 40;
 					if(maxHeight < text.preferredHeight + 30) maxHeight = text.preferredHeight + 30;

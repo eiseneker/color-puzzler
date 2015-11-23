@@ -61,7 +61,7 @@ public class GameController : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		frozen = false;
+		frozen = true;
 		timeSinceLastEvent = 0;
 		energyRequirementFactor = 1;
 		remainingEnergy = 100;
