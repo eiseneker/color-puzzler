@@ -2,7 +2,7 @@
     "name": "Debug Room",
     "randomizedTileCount": 0,
     "randomizedTargetCount": 0,
-    "remainingEnergy": 100,
+    "remainingEnergy": 10,
     "energyRequirementFactor": 1,
     "clusterColorFrequency": [
     	".5",
@@ -103,7 +103,7 @@
         },
         {
             "x": 6,
-            "y": 10,
+            "y": 3,
             "prefabName": "Target",
             "colorIndex": 1
         },
