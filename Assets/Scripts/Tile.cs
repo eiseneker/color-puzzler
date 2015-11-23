@@ -32,6 +32,14 @@ public class Tile : MonoBehaviour {
 			transform.parent = GameObject.Find ("Tiles").transform;
 		}
 	}
+	
+	public void DestroyWithDelay(){
+		Invoke ("DestroyMe", .5f);
+	}
+	
+	private void DestroyMe(){
+		Destroy (gameObject);
+	}
 
 	public void ResetTransitionState(){
 		GetComponent<Animator>().SetBool ("transitioning", false);

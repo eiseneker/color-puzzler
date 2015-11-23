@@ -37,6 +37,20 @@ public class Matrix : MonoBehaviour {
 		}
 	}
 	
+	public bool InsertIntoMatrixWithoutDestroy(GameObject objectToInsert){
+		grid.AlignTransform(objectToInsert.transform);
+		
+		int xArrayPosition = CoordinateToPosition(objectToInsert.transform.position.x, grid.renderTo.x, grid.spacing.x);
+		int yArrayPosition = CoordinateToPosition(objectToInsert.transform.position.y, grid.renderTo.y, grid.spacing.y);
+		if(CanInsertIntoMatrix(objectToInsert)){
+			matrix[xArrayPosition, yArrayPosition] = objectToInsert;
+			objectToInsert.GetComponent<GridElement>().SetPosition(xArrayPosition, yArrayPosition);
+			return(true);
+		}else{
+			return(false);
+		}
+	}
+	
 	public bool CanInsertIntoMatrix(GameObject objectToInsert){
 		int xArrayPosition = CoordinateToPosition(objectToInsert.transform.position.x, grid.renderTo.x, grid.spacing.x);
 		int yArrayPosition = CoordinateToPosition(objectToInsert.transform.position.y, grid.renderTo.y, grid.spacing.y);

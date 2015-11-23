@@ -200,7 +200,7 @@ public class EventController : MonoBehaviour {
 	
 	private void ConvertToBomb(Tile tile){
 		int originalColorIndex = tile.GetComponent<GridElement>().colorIndex;
-		Destroy(tile.gameObject);
+		tile.DestroyWithDelay();
 		GameObject bomb = Instantiate (Resources.Load ("Bomb"), tile.transform.position, Quaternion.identity) as GameObject;
 		bomb.GetComponent<GridElement>().colorSet = true;
 		bomb.GetComponent<GridElement>().survivesExplosion = false;
@@ -210,7 +210,13 @@ public class EventController : MonoBehaviour {
 		}
 		bomb.GetComponent<GridElement>().UpdateColorByIndex(Mathf.Abs (originalColorIndex + (3 * factor)));
 		bomb.transform.parent = GameObject.Find ("Bombs").transform;
-		grid.GetComponent<Matrix>().InsertIntoMatrix(bomb);
+		grid.GetComponent<Matrix>().InsertIntoMatrixWithoutDestroy(bomb);
+		Vector3 position = bomb.transform.position;
+		position.z = position.z - 1;
+		GameObject transition = Instantiate (Resources.Load ("TileTransition"), position, Quaternion.identity) as GameObject;
+		position = bomb.transform.position;
+		position.z = position.z + 1;
+		bomb.transform.position = position;
 	}
 	
 	private bool[] GenerateMatchMatrix(GameObject center){

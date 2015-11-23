@@ -17,6 +17,7 @@ public class Bomb : MonoBehaviour {
 		if(GameObject.Find ("Bombs").transform != transform.parent){
 			transform.parent = GameObject.Find ("Bombs").transform;
 		}
+		
 	}
 
 	public void Explode(){
