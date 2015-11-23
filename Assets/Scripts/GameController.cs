@@ -95,9 +95,8 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-		
 		if(started){
+			print ("in started state " + SpeechBubble.inFreezeState);
 			if(!SpeechBubble.inFreezeState && !initializeTilesFlipped){
 				ArrayList tilesToReview = new ArrayList();
 				
