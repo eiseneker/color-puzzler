@@ -27,10 +27,13 @@ public class GameController : MonoBehaviour {
 	private float minY;
 	private float maxY;
 	private bool levelCardActivated;
+	private bool initializeTilesFlipped;
 	
 	public void NextLevel(){
 		int index = LevelLoader.levels.BinarySearch(ApplicationController.levelToLoad);
 		if(index + 1 == LevelLoader.levels.Count){
+			ApplicationController.instance.GoToLevelSelect();
+		}else if(index < 0){
 			ApplicationController.instance.GoToLevelSelect();
 		}else{
 			ApplicationController.instance.GoToLevel((string)LevelLoader.levels[index + 1]);
@@ -92,14 +95,30 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(started){
-			timeSinceLastEvent += Time.deltaTime;
 		
-			if(timeSinceLastEvent > 1){
-				if(remainingTargetCount > 0){
-					frozen = false;
-				}else{
-					LoadWinScreen();
+		
+		if(started){
+			if(!SpeechBubble.inFreezeState && !initializeTilesFlipped){
+				ArrayList tilesToReview = new ArrayList();
+				
+				foreach(Transform tile in GameObject.Find ("Tiles").transform){
+					tilesToReview.Add (tile.GetComponent<Tile>());
+					ResetEventTimer();
+					frozen = true;
+				}
+				
+				EventController.tilesToReviewForLevel1 = tilesToReview;
+				
+				initializeTilesFlipped = true;
+			}else{
+				timeSinceLastEvent += Time.deltaTime;
+			
+				if(timeSinceLastEvent > 1){
+					if(remainingTargetCount > 0){
+						frozen = false;
+					}else{
+						LoadWinScreen();
+					}
 				}
 			}
 		}else if(Transition.finished && LevelCard.finished){
@@ -112,6 +131,7 @@ public class GameController : MonoBehaviour {
 			LevelCard.FadeIn();
 			levelCardActivated = true;
 		}
+		
 	}
 	
 	public static bool Frozen(){

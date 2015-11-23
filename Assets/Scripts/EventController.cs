@@ -7,7 +7,7 @@ public class EventController : MonoBehaviour {
 	public static ArrayList tilesToReviewForBombs = new ArrayList();
 	public static ArrayList tilesToIgnoreForLevel1 = new ArrayList();
 	
-	private float timeSinceLastEvaluation;
+	private float timeSinceLastEvaluation = 1f;
 	private bool evaluateBombs = false;
 	private ArrayList level2Tiles = new ArrayList();
 	private ArrayList level3Tiles = new ArrayList();
@@ -219,7 +219,10 @@ public class EventController : MonoBehaviour {
 			GridElement gridElement = center.GetComponent<GridElement>();
 			GameObject neighbor = ((GameObject)gridElement.AllNeighbors()[i]);
 			if(neighbor != null){
-				matchMatrix[i] = (OppositeColors(gridElement, neighbor.GetComponent<GridElement>()) && !neighbor.GetComponent<GridElement>().Disabled() && !neighbor.GetComponent<GridElement>().white && !neighbor.GetComponent<GridElement>().black);
+				bool hasOppositeColors = OppositeColors(gridElement, neighbor.GetComponent<GridElement>());
+                bool blackAndWhite = (gridElement.white && neighbor.GetComponent<GridElement>().black) || (gridElement.black && neighbor.GetComponent<GridElement>().white);
+                bool mismatched = !blackAndWhite && (neighbor.GetComponent<GridElement>().black || neighbor.GetComponent<GridElement>().black) && (neighbor.GetComponent<GridElement>().white || neighbor.GetComponent<GridElement>().white);
+				matchMatrix[i] = hasOppositeColors && !neighbor.GetComponent<GridElement>().Disabled() && !mismatched;
 			}
 		}
 		return(matchMatrix);

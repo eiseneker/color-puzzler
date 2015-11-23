@@ -1,0 +1,111 @@
+{
+    "name": "Debug Room",
+    "randomizedTileCount": 0,
+    "randomizedTargetCount": 0,
+    "remainingEnergy": 100,
+    "energyRequirementFactor": 1,
+    "clusterColorFrequency": [
+    	".5",
+    	"0.0",
+    	"0.0",
+    	"0",
+    	".5",
+    	"0.0",
+    ],
+    "targetColorFrequency": [
+    	"0",
+    	"0",
+    	"0",
+    	"0",
+    	"0",
+    	"1"
+    ],
+    "tileColorFrequency": [
+    	"0",
+    	"0",
+    	"0",
+    	"0",
+    	"0",
+    	"1",
+    ]
+    "grid": [
+        {
+            "x": 4,
+            "y": 12,
+            "prefabName": "Tile",
+            "colorIndex": 0
+        },
+        {
+            "x": 5,
+            "y": 12,
+            "prefabName": "Tile",
+            "colorIndex": 0
+        },
+        {
+            "x": 6,
+            "y": 12,
+            "prefabName": "Tile",
+            "colorIndex": 0
+        },
+        {
+            "x": 4,
+            "y": 13,
+            "prefabName": "Tile",
+            "colorIndex": 0
+        },
+        {
+            "x": 5,
+            "y": 13,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 6,
+            "y": 13,
+            "prefabName": "Tile",
+            "colorIndex": 0
+        },
+        {
+            "x": 4,
+            "y": 14,
+            "prefabName": "Tile",
+            "colorIndex": 0
+        },
+        {
+            "x": 5,
+            "y": 14,
+            "prefabName": "Tile",
+            "colorIndex": 0
+        },
+        {
+            "x": 6,
+            "y": 14,
+            "prefabName": "Tile",
+            "colorIndex": 0
+        },
+        {
+            "x": 4,
+            "y": 12,
+            "prefabName": "Tile",
+            "colorIndex": 0
+        },
+        {
+            "x": 5,
+            "y": 12,
+            "prefabName": "Tile",
+            "colorIndex": 0
+        },
+        {
+            "x": 6,
+            "y": 11,
+            "prefabName": "Tile",
+            "colorIndex": 1
+        },
+        {
+            "x": 6,
+            "y": 10,
+            "prefabName": "Target",
+            "colorIndex": 1
+        },
+    ]
+}
