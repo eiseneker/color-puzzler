@@ -107,6 +107,12 @@ public class LevelLoader : MonoBehaviour {
 				if(element["white"] != null){
 					newObject.GetComponent<GridElement>().white = element["white"].AsBool;
 				}
+				if(element["brown"] != null){
+					newObject.GetComponent<GridElement>().brown = element["brown"].AsBool;
+				}
+				if(element["gray"] != null){
+					newObject.GetComponent<GridElement>().gray = element["gray"].AsBool;
+				}
 				if(element["survivesExplosion"] != null){
 					newObject.GetComponent<GridElement>().survivesExplosion = element["survivesExplosion"].AsBool;
 				}

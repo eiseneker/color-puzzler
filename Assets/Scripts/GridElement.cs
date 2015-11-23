@@ -261,6 +261,28 @@ public class GridElement : MonoBehaviour {
 			if(!survivesExplosion) {
 				UpdateGameValues ();
 			}
+		}else if(newValue >= 6 && Disabled ()){
+			readyToExplode = false;
+			alive = survivesExplosion;
+			if(brown){
+				refundValue = 50;
+			}else if(gray){
+				refundValue = 99;
+			}
+			
+			ArrayList neighbors = GetComponent<GridElement>().CardinalNeighbors ();
+			foreach(GameObject neighborObject in neighbors){
+				if(neighborObject){
+					GridElement neighbor = neighborObject.GetComponent<GridElement>();
+					if(!neighbor.survivesExplosion && neighbor.Disabled()){
+						HandleExplosionWithNoDirection(neighbor, newValue);
+					}
+				}
+			}
+			
+			if(!survivesExplosion) {
+				UpdateGameValues ();
+			}
 		}
 	}
 	
