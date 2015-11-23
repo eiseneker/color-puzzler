@@ -61,6 +61,13 @@ public class GameController : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
+		frozen = false;
+		timeSinceLastEvent = 0;
+		energyRequirementFactor = 1;
+		remainingEnergy = 100;
+		randomizedTargetCount = 0;
+		randomizedTileCount = 0;
+		remainingTargetCount = 0;
 		namedElements = new ArrayList();
 		clusters = new ArrayList();
 		turnCount = 0;
