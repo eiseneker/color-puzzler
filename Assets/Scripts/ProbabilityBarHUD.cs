@@ -25,8 +25,6 @@ public class ProbabilityBarHUD : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		print ("probability: " +  Cluster.colorProbability[colorIndex]);
-	
 		if(!white && !black){
 			image.fillAmount = Cluster.colorProbability[colorIndex]/probabilityMax;
 			image.color = GridElement.colors[colorIndex];

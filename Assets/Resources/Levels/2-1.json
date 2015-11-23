@@ -1,6 +1,6 @@
 {
     "name": "Purple Skies",
-    "randomizedTileCount": 30,
+    "randomizedTileCount": 90,
     "randomizedTargetCount": 5,
     "remainingEnergy": 100,
     "energyRequirementFactor": 2,
