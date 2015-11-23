@@ -24,7 +24,6 @@ public class Pointer : MonoBehaviour {
 					InsertHere();
 				}
 			}else{
-				print ("frozen:" + GameController.Frozen ());
 				if(!GameController.Frozen () && !GameController.finished){
 					GameObject nextCluster = GameController.GetNextCluster();
 					if(nextCluster){

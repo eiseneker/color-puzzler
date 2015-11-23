@@ -47,6 +47,8 @@ public class LevelLoader : MonoBehaviour {
 			throw new UnityException("No manifest entry for clusterColorFrequency found");
 		}
 		
+		print ("cluster probability values set");
+		
 		if(json["clusterForcedPattern"] != null){
 			JSONArray pattern = json["clusterForcedPattern"].AsArray;
 			Cluster.forcedPattern = new int[] { pattern[0].AsInt, pattern[1].AsInt, pattern[2].AsInt, pattern[3].AsInt };
