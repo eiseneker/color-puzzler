@@ -1,8 +1,8 @@
 {
-    "name": "Debug Room",
+    "name": "there be some fine booty",
     "randomizedTileCount": 0,
     "randomizedTargetCount": 0,
-    "remainingEnergy": 10,
+    "remainingEnergy": 5,
     "energyRequirementFactor": 1,
     "clusterColorFrequency": [
     	"1",
@@ -21,16 +21,16 @@
     	"1"
     ],
     "tileColorFrequency": [
+    	"0",
+    	"0",
+    	"0",
+    	"0",
+    	"0",
     	"1",
-    	"0",
-    	"0",
-    	"0",
-    	"0",
-    	"0",
     ]
     "grid": [
     	{
-            "x": 4,
+            "x": 1,
             "y": 15,
             "prefabName": "Bomb",
             "colorIndex": 0,
@@ -70,28 +70,31 @@
             "x": 4,
             "y": 9,
             "prefabName": "Tile",
-            "colorIndex": 4
+            "colorIndex": 5
         },
         {
             "x": 4,
             "y": 8,
             "prefabName": "Tile",
             "colorIndex": 0,
-            "brown": true
+            "brown": true,
+            "friendlyName": "MrTile1"
         },
         {
             "x": 5,
             "y": 8,
             "prefabName": "Tile",
             "colorIndex": 0,
-            "brown": true
+            "brown": true,
+            "friendlyName": "MrTile2"
         },
         {
             "x": 6,
             "y": 8,
             "prefabName": "Tile",
             "colorIndex": 0,
-            "gray": true
+            "gray": true,
+            "friendlyName": "MrTile3"
         },
         {
             "x": 4,
@@ -99,5 +102,11 @@
             "prefabName": "Tile",
             "colorIndex": 0
         },
+        {
+            "x": 4,
+            "y": 4,
+            "prefabName": "Target",
+            "colorIndex": 0
+        }
     ]
 }
