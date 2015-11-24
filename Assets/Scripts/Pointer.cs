@@ -74,7 +74,7 @@ public class Pointer : MonoBehaviour {
 			EventController.ResetTiles();
 			EventController.tilesToReviewForLevel1 = tiles;
 			EventController.tilesToReviewForBombs = tiles;
-			GameController.remainingEnergy -= GameController.EnergyRequirement ();
+			GameController.remainingEnergy = Mathf.Clamp (GameController.remainingEnergy - GameController.EnergyRequirement (), 0, 100);
 			GameController.turnCount++;
 		}
 	}
