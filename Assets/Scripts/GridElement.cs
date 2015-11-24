@@ -243,6 +243,7 @@ public class GridElement : MonoBehaviour {
 	
 	private void Explode(){
 		int newValue = refundValue;
+		print (newValue + " ... " + Disabled ());
 		if(AbleToExplode ()){
 			readyToExplode = false;
 			alive = survivesExplosion;
@@ -252,8 +253,10 @@ public class GridElement : MonoBehaviour {
 					GridElement neighbor = neighborObject.GetComponent<GridElement>();
 					if(!neighbor.survivesExplosion){
 						if(explosionDirection == Direction.None){
+							print ("A");
 							HandleExplosionWithNoDirection(neighbor, newValue);
 						}else{
+							print ("B... neighbor disabled: " + neighbor.Disabled ());
 							HandleExplosionWithDirection (neighbor, newValue);
 						}
 					}
@@ -264,7 +267,7 @@ public class GridElement : MonoBehaviour {
 			if(!survivesExplosion) {
 				UpdateGameValues ();
 			}
-		}else if(newValue >= 6 && Disabled ()){
+		}else if(Disabled ()){
 			readyToExplode = false;
 			alive = survivesExplosion;
 			if(brown){
@@ -278,6 +281,7 @@ public class GridElement : MonoBehaviour {
 				if(neighborObject){
 					GridElement neighbor = neighborObject.GetComponent<GridElement>();
 					if(!neighbor.survivesExplosion && neighbor.Disabled()){
+						print ("C");
 						HandleExplosionWithNoDirection(neighbor, newValue);
 					}
 				}
@@ -326,7 +330,7 @@ public class GridElement : MonoBehaviour {
 		int newRefundValue = inputRefundValue;
 		
 		if(!neighbor.readyToExplode){
-			if((eitherIsWhite || ColorMatches (neighbor) || DirectionMatchesNeighbor(explosionDirection, neighbor))){
+			if((eitherIsWhite || ColorMatches (neighbor) || DirectionMatchesNeighbor(explosionDirection, neighbor)) || (newRefundValue >= 6 && neighbor.Disabled ())){
 				if(colorIndex != neighbor.colorIndex){
 					newRefundValue += 1;
 				}

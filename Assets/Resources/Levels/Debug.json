@@ -73,9 +73,46 @@
         },
         {
             "x": 4,
+            "y": 7,
+            "prefabName": "Tile",
+            "colorIndex": 0
+        },
+        {
+            "x": 4,
+            "y": 6,
+            "prefabName": "Tile",
+            "colorIndex": 1
+        },
+        {
+            "x": 4,
+            "y": 5,
+            "prefabName": "Tile",
+            "colorIndex": 1
+        },
+        {
+            "x": 0,
             "y": 6,
             "prefabName": "Target",
             "colorIndex": 0
+        },
+        {
+            "x": 4,
+            "y": 4,
+            "prefabName": "Tile",
+            "colorIndex": 0,
+            "brown": true
+        },
+        {
+            "x": 5,
+            "y": 4,
+            "prefabName": "Tile",
+            "brown": true
+        },
+        {
+            "x": 4,
+            "y": 3,
+            "prefabName": "Tile",
+            "gray": true
         }
     ]
 }
