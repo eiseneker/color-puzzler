@@ -29,13 +29,6 @@
     	"0",
     ]
     "grid": [
-    	{
-            "x": 4,
-            "y": 15,
-            "prefabName": "Bomb",
-            "colorIndex": 0,
-            "white": true
-        },
         {
             "x": 4,
             "y": 14,
@@ -46,58 +39,72 @@
             "x": 4,
             "y": 13,
             "prefabName": "Tile",
-            "colorIndex": 1
+            "colorIndex": 3
         },
         {
             "x": 4,
             "y": 12,
             "prefabName": "Tile",
-            "colorIndex": 2
-        },
-        {
-            "x": 4,
-            "y": 11,
-            "prefabName": "Tile",
-            "colorIndex": 3
-        },
-        {
-            "x": 4,
-            "y": 10,
-            "prefabName": "Tile",
-            "colorIndex": 4
-        },
-        {
-            "x": 4,
-            "y": 9,
-            "prefabName": "Tile",
-            "colorIndex": 4
-        },
-        {
-            "x": 4,
-            "y": 8,
-            "prefabName": "Tile",
-            "colorIndex": 0,
-            "brown": true
-        },
-        {
-            "x": 5,
-            "y": 8,
-            "prefabName": "Tile",
-            "colorIndex": 0,
-            "brown": true
+            "colorIndex": 0
         },
         {
             "x": 6,
-            "y": 8,
-            "prefabName": "Tile",
-            "colorIndex": 0,
-            "gray": true
-        },
-        {
-            "x": 4,
-            "y": 7,
+            "y": 14,
             "prefabName": "Tile",
             "colorIndex": 0
         },
+        {
+            "x": 6,
+            "y": 13,
+            "prefabName": "Tile",
+            "colorIndex": 3,
+            "black": true
+        },
+        {
+            "x": 6,
+            "y": 12,
+            "prefabName": "Tile",
+            "colorIndex": 0
+        },
+        {
+            "x": 8,
+            "y": 14,
+            "prefabName": "Tile",
+            "colorIndex": 0
+        },
+        {
+            "x": 8,
+            "y": 13,
+            "prefabName": "Tile",
+            "colorIndex": 3,
+            "brown": true
+        },
+        {
+            "x": 8,
+            "y": 12,
+            "prefabName": "Tile",
+            "colorIndex": 0
+        },
+        {
+            "x": 10,
+            "y": 14,
+            "prefabName": "Tile",
+            "colorIndex": 0,
+            "black": true
+        },
+        {
+            "x": 10,
+            "y": 13,
+            "prefabName": "Tile",
+            "colorIndex": 3,
+            "white": true
+        },
+        {
+            "x": 10,
+            "y": 12,
+            "prefabName": "Tile",
+            "colorIndex": 0,
+            "black": true
+        }
     ]
 }

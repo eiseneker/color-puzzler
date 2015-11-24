@@ -141,12 +141,24 @@ public class EventController : MonoBehaviour {
 	private void FlipTiles(){
 		foreach(Tile tile in tilesToFlip){
 			if(!tilesToIgnoreForLevel1.Contains(tile)){
-				int factor = 1;
-				if(tile.GetComponent<GridElement>().colorIndex >= 3){
-					factor *= -1;
+				GridElement gridElement = tile.GetComponent<GridElement>();
+				if(gridElement.white || gridElement.black){
+					if(gridElement.white) {
+						gridElement.white = false;
+						gridElement.black = true;
+					}else{
+						gridElement.white = true;
+						gridElement.black = false;
+					}
+					gridElement.UpdateColor(1);
+				}else{
+					int factor = 1;
+					if(tile.GetComponent<GridElement>().colorIndex >= 3){
+						factor *= -1;
+					}
+					int difference = Mathf.Abs (tile.GetComponent<GridElement>().colorIndex + (3 * factor));
+					tile.GetComponent<GridElement>().UpdateColorByIndex(difference, 1);
 				}
-				int difference = Mathf.Abs (tile.GetComponent<GridElement>().colorIndex + (3 * factor));
-				tile.GetComponent<GridElement>().UpdateColorByIndex(difference, 1);
 				GameController.ResetEventTimer();
 				tile.EnterTransitionState();
 				tilesToIgnoreForLevel1.Add (tile);
@@ -213,7 +225,7 @@ public class EventController : MonoBehaviour {
 		grid.GetComponent<Matrix>().InsertIntoMatrixWithoutDestroy(bomb);
 		Vector3 position = bomb.transform.position;
 		position.z = position.z - 1;
-		GameObject transition = Instantiate (Resources.Load ("TileTransition"), position, Quaternion.identity) as GameObject;
+		Instantiate (Resources.Load ("TileTransition"), position, Quaternion.identity);
 		position = bomb.transform.position;
 		position.z = position.z + 1;
 		bomb.transform.position = position;
@@ -227,8 +239,11 @@ public class EventController : MonoBehaviour {
 			if(neighbor != null){
 				bool hasOppositeColors = OppositeColors(gridElement, neighbor.GetComponent<GridElement>());
                 bool blackAndWhite = (gridElement.white && neighbor.GetComponent<GridElement>().black) || (gridElement.black && neighbor.GetComponent<GridElement>().white);
-                bool mismatched = !blackAndWhite && (neighbor.GetComponent<GridElement>().black || neighbor.GetComponent<GridElement>().black) && (neighbor.GetComponent<GridElement>().white || neighbor.GetComponent<GridElement>().white);
-				matchMatrix[i] = hasOppositeColors && !neighbor.GetComponent<GridElement>().Disabled() && !mismatched;
+				bool mismatched = !blackAndWhite && (neighbor.GetComponent<GridElement>().black || gridElement.black || neighbor.GetComponent<GridElement>().white || gridElement.white);
+				print ("blackAndWhite: " + blackAndWhite);
+                print ("mismatch: " + mismatched);
+				print ("hasOppositeColors: " + hasOppositeColors);
+				matchMatrix[i] = hasOppositeColors && !neighbor.GetComponent<GridElement>().Disabled() && !gridElement.Disabled () && !mismatched;
 			}
 		}
 		return(matchMatrix);
