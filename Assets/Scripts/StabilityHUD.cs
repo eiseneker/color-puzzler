@@ -13,6 +13,6 @@ public class StabilityHUD : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		text.text = (Cluster.colorStability * 100).ToString () + "%";
+		text.text = Mathf.Round ((Mathf.Pow(Cluster.colorStability, 4) * 100)).ToString () + "%";
 	}
 }

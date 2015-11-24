@@ -1,6 +1,6 @@
 {
     "name": "Purple Skies",
-    "randomizedTileCount": 90,
+    "randomizedTileCount": 120,
     "randomizedTargetCount": 5,
     "remainingEnergy": 100,
     "energyRequirementFactor": 2,
@@ -12,21 +12,22 @@
     	".5",
     	"0.0",
     ],
+    "clusterColorStability": ".5",
     "targetColorFrequency": [
-    	"1",
+    	"0.5",
     	"0",
     	"0",
     	"0",
-    	"0",
+    	"0.5",
     	"0"
     ],
     "tileColorFrequency": [
+    	"0",
+    	"0",
+    	"0",
+    	"0",
+    	"0",
     	"1",
-    	"0",
-    	"0",
-    	"0",
-    	"0",
-    	"0",
     ]
     "grid": [
         {

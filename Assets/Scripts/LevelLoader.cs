@@ -18,6 +18,9 @@ public class LevelLoader : MonoBehaviour {
 			levels.Add ("1-6");
 			levels.Add ("1-7");
 			levels.Add ("1-8");
+			levels.Add ("1-9");
+			levels.Add ("1-10");
+			levels.Add ("2-1");
 		}
 	}
 	
@@ -57,7 +60,7 @@ public class LevelLoader : MonoBehaviour {
 		}
 		
 		if(json["clusterColorStability"] != null){
-			Cluster.colorStability = json["clusterColorVariance"].AsFloat;
+			Cluster.colorStability = json["clusterColorStability"].AsFloat;
 		}else{
 			Cluster.colorStability = 1;
 		}

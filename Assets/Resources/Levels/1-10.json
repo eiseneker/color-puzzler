@@ -1,0 +1,68 @@
+{
+    "name": "the final lesson",
+    "randomizedTileCount": 0,
+    "randomizedTargetCount": 0,
+    "remainingEnergy": 100,
+    "energyRequirementFactor": 2,
+    "clusterColorFrequency": [
+    	".222",
+    	"0.111",
+    	".222",
+    	"0.111",
+    	".222",
+    	"0.111",
+    ],
+    "clusterColorStability": ".9",
+    "grid": [
+    	{
+            "x": 2,
+            "y": 13,
+            "prefabName": "Bomb",
+            "colorIndex": 0,
+            "white": true
+        },
+        {
+            "x": 5,
+            "y": 10,
+            "prefabName": "Target",
+            "colorIndex": 1
+        },
+        {
+            "x": 8,
+            "y": 10,
+            "prefabName": "Target",
+            "colorIndex": 3
+        },
+        {
+            "x": 5,
+            "y": 7,
+            "prefabName": "Target",
+            "colorIndex": 0
+        },
+        {
+            "x": 8,
+            "y": 7,
+            "prefabName": "Target",
+            "colorIndex": 4
+        },
+        {
+            "x": 5,
+            "y": 4,
+            "prefabName": "Target",
+            "colorIndex": 2
+        },
+        {
+            "x": 8,
+            "y": 4,
+            "prefabName": "Target",
+            "colorIndex": 5
+        },
+        {
+            "x": 2,
+            "y": 1,
+            "prefabName": "Bomb",
+            "colorIndex": 0,
+            "white": true
+        },
+    ]
+}
