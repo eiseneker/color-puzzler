@@ -342,13 +342,7 @@ public class GridElement : MonoBehaviour {
 	}
 	
 	private void UpdateGameValues(){
-		if(countable) {
-			GameController.remainingEnergy += refundValue;
-			if(refundValue > 0){
-				GameObject bonus = Instantiate (Resources.Load ("Bonus"), Camera.main.WorldToScreenPoint(transform.position), Quaternion.identity) as GameObject;
-				bonus.GetComponent<Bonus>().SetValue(refundValue);
-			}
-		}
+		bool bonusGiven = false;
 		if(GetComponent<Target>()){
 			GameController.remainingTargetCount--;
 			GameController.remainingEnergy += 10;
@@ -361,6 +355,16 @@ public class GridElement : MonoBehaviour {
 			speechBubble.transform.position = Camera.main.WorldToScreenPoint(gameObject.transform.position);
 			GameObject bonus = Instantiate (Resources.Load ("Bonus"), Camera.main.WorldToScreenPoint(transform.position), Quaternion.identity) as GameObject;
 			bonus.GetComponent<Bonus>().SetValue(10);
+			bonusGiven = true;
+		}
+		if(countable) {
+			if(!bonusGiven){
+				GameController.remainingEnergy += refundValue;
+				if(refundValue > 0){
+					GameObject bonus = Instantiate (Resources.Load ("Bonus"), Camera.main.WorldToScreenPoint(transform.position), Quaternion.identity) as GameObject;
+					bonus.GetComponent<Bonus>().SetValue(refundValue);
+				}
+			}
 		}
 		GameObject explosion = Instantiate (Resources.Load ("Explosion"), transform.position, Quaternion.identity) as GameObject;
 		explosion.transform.Find ("Body").GetComponent<SpriteRenderer>().color = color;
