@@ -29,10 +29,10 @@ public class ProbabilityBarHUD : MonoBehaviour {
 			image.fillAmount = Cluster.colorProbability[colorIndex]/probabilityMax;
 			image.color = GridElement.colors[colorIndex];
 		}else if(white){
-			image.fillAmount = Cluster.whiteProbability;
+			image.fillAmount = Cluster.whiteProbability/probabilityMax;
 			image.color = Color.white;
 		}else if(black){
-			image.fillAmount = Cluster.blackProbability;
+			image.fillAmount = Cluster.blackProbability/probabilityMax;
 			image.color = Color.black;
 		}
 	}
