@@ -21,6 +21,7 @@ public class LevelLoader : MonoBehaviour {
 			levels.Add ("1-9");
 			levels.Add ("1-10");
 			levels.Add ("2-1");
+			levels.Add ("2-2");
 		}
 	}
 	

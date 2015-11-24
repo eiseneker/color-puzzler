@@ -1,0 +1,414 @@
+{
+    "name": "ti-83+",
+    "randomizedTileCount": 0,
+    "randomizedTargetCount": 0,
+    "remainingEnergy": 100,
+    "energyRequirementFactor": 2,
+    "clusterColorFrequency": [
+    	"0",
+    	"0.33333",
+    	"0",
+    	"0",
+    	".33333",
+    	"0.3333",
+    ],
+    "clusterColorStability": ".5",
+    "grid": [
+        {
+            "x": 2,
+            "y": 14,
+            "prefabName": "Bomb",
+            "colorIndex": 5
+        },
+        {
+            "x": 2,
+            "y": 13,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 4,
+            "y": 13,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 5,
+            "y": 13,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 6,
+            "y": 13,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 7,
+            "y": 13,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x":8,
+            "y": 13,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 9,
+            "y": 13,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 10,
+            "y": 13,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 2,
+            "y": 12,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 4,
+            "y": 12,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 14,
+            "y": 12,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 10,
+            "y": 12,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 2,
+            "y": 11,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 4,
+            "y": 11,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 6,
+            "y": 11,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 7,
+            "y": 11,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 8,
+            "y": 11,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 10,
+            "y": 11,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 2,
+            "y": 10,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 4,
+            "y": 10,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 6,
+            "y": 10,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 8,
+            "y": 10,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 10,
+            "y": 10,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 2,
+            "y": 9,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 4,
+            "y": 9,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 6,
+            "y": 9,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 8,
+            "y": 9,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 10,
+            "y": 9,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 2,
+            "y": 8,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 4,
+            "y": 8,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 6,
+            "y": 8,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 8,
+            "y": 8,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 10,
+            "y": 8,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 2,
+            "y": 7,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 4,
+            "y": 7,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 8,
+            "y": 7,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 10,
+            "y": 7,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 2,
+            "y": 6,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 4,
+            "y": 6,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 6,
+            "y": 6,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 8,
+            "y": 6,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 10,
+            "y": 6,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 2,
+            "y": 5,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 4,
+            "y": 5,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 8,
+            "y": 5,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 10,
+            "y": 5,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 2,
+            "y": 4,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 4,
+            "y": 4,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 5,
+            "y": 4,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 6,
+            "y": 4,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 7,
+            "y": 4,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 8,
+            "y": 4,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 10,
+            "y": 4,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 2,
+            "y": 3,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 10,
+            "y": 3,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 2,
+            "y": 2,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 3,
+            "y": 2,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 4,
+            "y": 2,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 5,
+            "y": 2,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 6,
+            "y": 2,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 7,
+            "y": 2,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 8,
+            "y": 2,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 9,
+            "y": 2,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 10,
+            "y": 2,
+            "prefabName": "Tile",
+            "colorIndex": 3
+        },
+        {
+            "x": 6,
+            "y": 6,
+            "prefabName": "Target",
+            "colorIndex": 0
+        }
+    ]
+}
