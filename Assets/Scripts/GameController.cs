@@ -201,6 +201,6 @@ public class GameController : MonoBehaviour {
 	}
 	
 	public static float EnergyRequirement(){
-		return(Mathf.Ceil (turnCount + 1 / 5) + 1 * energyRequirementFactor);
+		return(Mathf.Clamp (Mathf.Ceil (turnCount + 1 / 10) + 1 * energyRequirementFactor, 1, 8));
 	}
 }
