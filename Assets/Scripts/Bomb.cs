@@ -14,6 +14,8 @@ public class Bomb : MonoBehaviour {
 			GetComponent<GridElement>().colorSet = true;
 		}
 		
+		GetComponent<GridElement>().InitializeColor();
+		
 		if(GameObject.Find ("Bombs").transform != transform.parent){
 			transform.parent = GameObject.Find ("Bombs").transform;
 		}

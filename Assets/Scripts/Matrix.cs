@@ -60,7 +60,6 @@ public class Matrix : MonoBehaviour {
 			}else{
 				GridElement elementAtPosition = matrix[xArrayPosition, yArrayPosition].GetComponent<GridElement>();
 				bool canInsert = elementAtPosition.canBeReplaced;
-				print ("canInsert: " + canInsert + " ... " + elementAtPosition.GetComponent<Bomb>());
 				if(canInsert){
 					if(elementAtPosition.Disabled() && objectToInsert.GetComponent<GridElement>().black){
 						canInsert = true;

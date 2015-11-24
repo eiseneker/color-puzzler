@@ -44,9 +44,12 @@ public class GridElement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		gameObject.name = Random.Range (0, 9999999).ToString ();
+	}
+	
+	public void InitializeColor(){
 		UpdateColorByIndex (colorIndex);
 		SetColor();
-		gameObject.name = Random.Range (0, 9999999).ToString ();
 	}
 	
 	private Matrix Matrix(){
@@ -56,7 +59,7 @@ public class GridElement : MonoBehaviour {
 		return(matrix);
 	}
 	
-	private void SetColor(){
+	public void SetColor(){
 		GetComponent<MeshRenderer>().material.SetColor ("_Color", color);
 		Tile tile = GetComponent<Tile>();
 		if(tile){

@@ -31,6 +31,8 @@ public class Tile : MonoBehaviour {
 		if(GetComponent<GridElement>().insertedIntoMatrix && GameObject.Find ("Tiles").transform != transform.parent){
 			transform.parent = GameObject.Find ("Tiles").transform;
 		}
+		
+		GetComponent<GridElement>().InitializeColor();
 	}
 	
 	public void DestroyWithDelay(){

@@ -240,9 +240,6 @@ public class EventController : MonoBehaviour {
 				bool hasOppositeColors = OppositeColors(gridElement, neighbor.GetComponent<GridElement>());
                 bool blackAndWhite = (gridElement.white && neighbor.GetComponent<GridElement>().black) || (gridElement.black && neighbor.GetComponent<GridElement>().white);
 				bool mismatched = !blackAndWhite && (neighbor.GetComponent<GridElement>().black || gridElement.black || neighbor.GetComponent<GridElement>().white || gridElement.white);
-				print ("blackAndWhite: " + blackAndWhite);
-                print ("mismatch: " + mismatched);
-				print ("hasOppositeColors: " + hasOppositeColors);
 				matchMatrix[i] = hasOppositeColors && !neighbor.GetComponent<GridElement>().Disabled() && !gridElement.Disabled () && !mismatched;
 			}
 		}

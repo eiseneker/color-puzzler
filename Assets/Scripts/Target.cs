@@ -13,6 +13,8 @@ public class Target : MonoBehaviour {
 			GetComponent<GridElement>().colorSet = true;
 		}
 		
+		GetComponent<GridElement>().InitializeColor();
+		
 		if(GameObject.Find ("Targets").transform != transform.parent){
 			transform.parent = GameObject.Find ("Targets").transform;
 		}

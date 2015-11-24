@@ -57,8 +57,6 @@ public class LevelLoader : MonoBehaviour {
 			throw new UnityException("No manifest entry for clusterColorFrequency found");
 		}
 		
-		print ("cluster probability values set");
-		
 		if(json["clusterForcedPattern"] != null){
 			JSONArray pattern = json["clusterForcedPattern"].AsArray;
 			Cluster.forcedPattern = new int[] { pattern[0].AsInt, pattern[1].AsInt, pattern[2].AsInt, pattern[3].AsInt };
@@ -111,6 +109,7 @@ public class LevelLoader : MonoBehaviour {
 				Vector3 newPosition = matrix.PositionToCoordinate(x, y);
 				GameObject newObject = Instantiate (Resources.Load (element["prefabName"]), newPosition, Quaternion.identity) as GameObject;
 				if(element["colorIndex"] != null){
+					print ("set color!");
 					newObject.GetComponent<GridElement>().colorIndex = element["colorIndex"].AsInt;
 					newObject.GetComponent<GridElement>().colorSet = true;
 				}
@@ -133,6 +132,8 @@ public class LevelLoader : MonoBehaviour {
 					newObject.GetComponent<GridElement>().friendlyName = element["friendlyName"];
 					GameController.namedElements.Add (newObject.GetComponent<GridElement>());
 				}
+				newObject.GetComponent<GridElement>().UpdateColor ();
+				newObject.GetComponent<GridElement>().SetColor ();
 				matrix.InsertIntoMatrix (newObject);
 			}
 		}
