@@ -1,7 +1,7 @@
 {
-    "name": "Scramble I",
-    "randomizedTileCount": 20,
-    "randomizedTargetCount": 3,
+    "name": "Scramble III",
+    "randomizedTileCount": 60,
+    "randomizedTargetCount": 10,
     "remainingEnergy": 100,
     "energyRequirementFactor": 2,
     "clusterColorFrequency": [
@@ -30,9 +30,9 @@
     	"0.166666",
     ],
     "clusterWhiteFrequency": ".05",
-    "clusterBlackFrequency": ".05",
-    "tileWhiteFrequency": ".1",
-    "tileBlackFrequency": ".1",,
+    "clusterBlackFrequency": ".075",
+    "tileWhiteFrequency": ".2",
+    "tileBlackFrequency": ".3",,
     "grid": [
     	{
     		"x": 5,

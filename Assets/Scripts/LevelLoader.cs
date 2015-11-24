@@ -22,6 +22,12 @@ public class LevelLoader : MonoBehaviour {
 			levels.Add ("1-10");
 			levels.Add ("2-1");
 			levels.Add ("2-2");
+			levels.Add ("2-3");
+			levels.Add ("2-4");
+			levels.Add ("2-5");
+			levels.Add ("2-6");
+			levels.Add ("2-7");
+			levels.Add ("2-8");
 		}
 	}
 	
@@ -110,6 +116,9 @@ public class LevelLoader : MonoBehaviour {
 				}
 				if(element["white"] != null){
 					newObject.GetComponent<GridElement>().white = element["white"].AsBool;
+				}
+				if(element["black"] != null){
+					newObject.GetComponent<GridElement>().black = element["black"].AsBool;
 				}
 				if(element["brown"] != null){
 					newObject.GetComponent<GridElement>().brown = element["brown"].AsBool;
